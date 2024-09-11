@@ -33,6 +33,18 @@
         .modal.fade .modal-dialog {
             transform: translate(0, 0);
         }
+        #spinnerContainer {
+            background-color: #0006;
+            color: aqua;
+            z-index: 1050;
+            width: 100vw;
+            height: 100vh;
+        }
+    
+        .d-none {
+            display: none !important;
+        }
+        
 
     </style>
 </head>
@@ -46,6 +58,13 @@
             </div>
         </div>
         <!-- Spinner End -->
+        <div id="spinnerContainer" class="d-none position-fixed top-50 start-50 translate-middle d-flex flex-column align-items-center justify-content-center">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div id="progressText" class="mt-3 text-light">0%</div>
+        </div>
+        
 
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
@@ -257,62 +276,94 @@
 
             <!-- Password Verification Modal -->
             <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-xm">
+                    <div class="modal-content" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="passwordModalLabel"><i class="fas fa-lock me-2"></i>Password Verification</h5>
+                            <h5 class="modal-title" id="passwordModalLabel" style="font-weight: 700; font-family: 'Helvetica Neue', sans-serif; color: #0009">
+                                <i class="fas fa-lock me-2"></i>Password Verification
+                            </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" style="padding: 2rem;">
                             <form id="passwordForm">
                                 <div class="mb-3">
-                                    <label for="userPassword" class="form-label">Enter your password to confirm Process:</label>
-                                    <input type="password" class="form-control" id="userPassword" placeholder="Password">
-                                    <div class="invalid-feedback">
+                                    <label for="userPassword" class="form-label" style="font-weight: 600; color: #555;">
+                                        Enter your password to confirm Process:
+                                    </label>
+                                    <input type="password" class="form-control" id="userPassword" placeholder="Password" style="border-radius: 50px; padding: 0.75rem; border: 1px solid #ccc;">
+                                    <div class="invalid-feedback" style="color: #ff4d4d;">
                                         Incorrect password. Please try again.
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="verifyPasswordBtn">Verify</button>
+                        <div class="modal-footer" style="border-top: 1px solid #ccc;">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="border-radius: 50px; padding: 0.5rem 1.5rem;">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" id="verifyPasswordBtn" style="border-radius: 50px; padding: 0.5rem 1.5rem;">
+                                Verify
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
+
             <!-- Modal after Successful Password Verification -->
             <div class="modal fade" id="actionModal" tabindex="-1" aria-labelledby="actionModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content" style="border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="actionModalLabel"><i class="fas fa-file-alt me-2"></i>Choose Action</h5>
+                            <h5 class="modal-title" id="actionModalLabel" style="font-weight: 700; font-family: 'Helvetica Neue', sans-serif; color: #0007">
+                                <i class="fas fa-file-alt me-2"></i>Executive Action Required
+                            </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <h6 class="mb-3">Summary of Details</h6>
+                        <div class="modal-body" style="padding: 2rem;">
+                            <h6 class="mb-3" style="font-weight: 600; color: #333; text-transform: uppercase; letter-spacing: 1px;">Cheque Details</h6>
                             <ul class="list-unstyled">
-                                <li><strong>School:</strong> <span id="summarySchool">Kolanya Boys High School</span></li>
-                                <li><strong>Education Level:</strong> <span id="summaryEducationLevel">Secondary</span></li>
-                                <li><strong>Date for Cheque Letter Signed:</strong> <span id="summaryChequeDate">2024-09-10</span></li>
-                                <li><strong>Beneficiaries:</strong> <span id="summaryBeneficiaries">123</span></li>
-                                <li><strong>Amount per Student (Kshs):</strong> <span id="summaryAmountPerStudent">1000</span></li>
-                                <li><strong>Total Amount Disbursed (Kshs):</strong> <span id="summaryTotalAmount">123000</span></li>
-                                <li><strong>Cheque Number:</strong> <span id="summaryChequeNumber">CH123456</span></li>
-                            </ul>
-                            <hr>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <strong style="color: #555;">School:</strong> 
+                                    <span id="summarySchool" style="color: #000;">Kolanya Boys High School</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <strong style="color: #555;">Education Level:</strong> 
+                                    <span id="summaryEducationLevel" style="color: #000;">Secondary</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <strong style="color: #555;">Date for Cheque Letter Signed:</strong> 
+                                    <span id="summaryChequeDate" style="color: #000;">2024-09-10</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <strong style="color: #555;">Beneficiaries:</strong> 
+                                    <span id="summaryBeneficiaries" style="color: #000;">123</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <strong style="color: #555;">Amount per Student (Kshs):</strong> 
+                                    <span id="summaryAmountPerStudent" style="color: #000;">1000</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <strong style="color: #555;">Total Amount Disbursed (Kshs):</strong> 
+                                    <span id="summaryTotalAmount" style="color: #000;">123000</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <strong style="color: #555;">Cheque Number:</strong> 
+                                    <span id="summaryChequeNumber" style="color: #000;">CH123456</span>
+                                </li>
+                            </ul>                
+                            <hr style="border-top: 1px solid #ccc;">
                             <div class="d-flex justify-content-around">
-                                <button class="btn btn-outline-primary" id="printLetter">
+                                <button class="btn btn-outline-primary" id="printLetter" style="border-radius: 50px; padding: 0.5rem 2rem;">
                                     <i class="fas fa-print"></i> Print
                                 </button>
-                                <button class="btn btn-outline-success" id="downloadLetter">
+                                <button class="btn btn-outline-success" id="downloadLetter" style="border-radius: 50px; padding: 0.5rem 2rem;">
                                     <i class="fas fa-download"></i> Download
                                 </button>
-                                <button class="btn btn-outline-info" id="shareLetter">
+                                <button class="btn btn-outline-info" id="shareLetter" style="border-radius: 50px; padding: 0.5rem 2rem;">
                                     <i class="fas fa-share-alt"></i> Share
                                 </button>
-                                <button class="btn btn-outline-secondary" id="viewLetter">
+                                <button class="btn btn-outline-secondary" id="viewLetter" style="border-radius: 50px; padding: 0.5rem 2rem;">
                                     <i class="fas fa-eye"></i> View
                                 </button>
                             </div>
@@ -320,6 +371,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
@@ -387,7 +439,7 @@
     <script src="js/main.js"></script>
     <script>
         // Dummy password for verification
-        const correctPassword = 'admin123';
+        const correctPassword = '123';
     
         document.getElementById('generateLetterBtn').addEventListener('click', function () {
             // Show the password verification modal
@@ -403,13 +455,42 @@
                 // Hide the password modal
                 var passwordModal = bootstrap.Modal.getInstance(document.getElementById('passwordModal'));
                 passwordModal.hide();
-    
-                // Populate and show the action modal
-                populateActionModal();
+        
+                // Show the spinner with progress
+                showSpinnerWithProgress();
+        
+                // Simulate counting progress
+                let progress = 0;
+                const progressInterval = setInterval(function() {
+                    progress++;
+                    document.getElementById('progressText').textContent = progress + '%';
+        
+                    // Stop counting when 100% is reached
+                    if (progress >= 100) {
+                        clearInterval(progressInterval);
+                        hideSpinnerAndShowActionModal();
+                    }
+                }, 5);
             } else {
                 document.getElementById('userPassword').classList.add('is-invalid');
             }
         });
+        
+        function showSpinnerWithProgress() {
+            // Display spinner
+            document.getElementById('spinnerContainer').classList.remove('d-none');
+        }
+        
+        function hideSpinnerAndShowActionModal() {
+            // Hide spinner
+            document.getElementById('spinnerContainer').classList.add('d-none');
+        
+            // Show the action modal
+            var actionModal = new bootstrap.Modal(document.getElementById('actionModal'), {
+                keyboard: false
+            });
+            actionModal.show();
+        }        
     
         function populateActionModal() {
             // Simulate fetching data (replace with actual data fetching logic)
