@@ -62,8 +62,8 @@
                     <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="verification.html" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
                     <a href="analysis.html" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
-                    <a href="letters.html" class="nav-item nav-link active"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
-                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
+                    <a href="letters.html" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
+                    <a href="reports.html" class="nav-item nav-link active"><i class="fa fa-file-alt me-2"></i>Reports</a>
                     <a href="bulk.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-h me-2"></i>Others</a>
@@ -170,112 +170,35 @@
             </nav>
             <!-- Navbar End -->
 
-            <!-- Letter Processing Section Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row mb-2">
-                    <div class="col-md-12 bg-light">
-                        <div class="handles p-2">
-                            <div class="left-issue d-flex justify-content-between">
-                                <h3 class="">Letter(s)  </h3>
-                                <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
-                            </div>
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Single Line Chart</h6>
+                            <canvas id="bar-chart"></canvas>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="row g-4">
-                            <!-- Letters Card -->
-                            <div class="col-md-12">
-                                <div class="card text-center p-3 shadow-sm border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-envelope fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Letters</h5>
-                                        <p class="text-muted">Manage All</p>
-                                        <div class="dflex justify-content-between">
-                                            <a href="letter_processing.html?secondary" class="btn btn-primary btn-sm">Secondary (321)</a>
-                                            <a href="letter_processing.html?tertiary" class="btn btn-secondary btn-sm">Tertiary (45)</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- History Card -->
-                            <div class="col-md-6">
-                                <div class="card text-center p-3 shadow-sm border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-history fa-2x mb-3 text-success"></i>
-                                        <h5 class="card-title">History</h5>
-                                        <p class="text-muted">Track Activities</p>
-                                        <a href="history.html" class="btn btn-success btn-sm">View History</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Acknowledgement Letters Card -->
-                            <div class="col-md-6">
-                                <div class="card text-center p-3 shadow-sm border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-check-circle fa-2x mb-3 text-info"></i>
-                                        <h5 class="card-title">Acknowledgements</h5>
-                                        <p class="text-muted">School Letters</p>
-                                        <a href="acknowledgement.html" class="btn btn-info btn-sm">View Letters</a>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Ward Disbursement</h6>
+                            <canvas id="warddisbursement"></canvas>
                         </div>
                     </div>
-
-                    <div class="col-md-5">
-                        <h5 class="text-center bg-light p-3">Top Schools</h5>
-                        <div id="topSchoolsCarousel" class="carousel slide shadow-sm" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="card text-center p-3">
-                                        <i class="fas fa-school fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Kolanya Boys High</h5>
-                                        <h5 class="text-muted">Ksh 1,200,000</h5>
-                                        <p class="text-muted">100 Students</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card text-center p-3">
-                                        <i class="fas fa-school fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Kamuria Secondary</h5>
-                                        <h5 class="text-muted">Ksh 1,050,000</h5>
-                                        <p class="text-muted">100 Students</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card text-center p-3">
-                                        <i class="fas fa-school fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Kamusinga Boys High</h5>
-                                        <h5 class="text-muted">Ksh 900,500</h5>
-                                        <p class="text-muted">100 Students</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card text-center p-3">
-                                        <i class="fas fa-school fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Alliance High</h5>
-                                        <h5 class="text-muted">Ksh 850,400</h5>
-                                        <p class="text-muted">100 Students</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#topSchoolsCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#topSchoolsCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Disbursement by Type Chart</h6>
+                            <canvas id="type-disbursed"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Education Level Chart </h6>
+                            <canvas id="school-statistics"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Letter Processing Section End -->
+
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
