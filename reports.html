@@ -59,11 +59,11 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="verification.html" class="nav-item nav-link "><i class="fa fa-check me-2"></i>Verification</a>
+                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="verification.html" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
                     <a href="analysis.html" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
                     <a href="letters.html" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
-                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
+                    <a href="reports.html" class="nav-item nav-link active"><i class="fa fa-file-alt me-2"></i>Reports</a>
                     <a href="bulk.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-h me-2"></i>Others</a>
@@ -170,153 +170,34 @@
             </nav>
             <!-- Navbar End -->
 
-
-            <!-- Summary cards Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-sync-alt fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Data Sync</p>
-                                <h6 class="mb-0">4/60</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-file-alt fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Applications</p>
-                                <h6 class="mb-0">4,200</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-map-marker-alt fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Ward Counts</p>
-                                <h6 class="mb-0">4/6</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-wheelchair fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">PWDs</p>
-                                <h6 class="mb-0">34</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-child fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Partial Orphans</p>
-                                <h6 class="mb-0">89</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-users fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Orphans</p>
-                                <h6 class="mb-0">119</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-user fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Single Parents</p>
-                                <h6 class="mb-0">34</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Summary cards End -->
-
-            <!-- Statistics  Chart Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Ward Statistics</h6>
-                                <a href="">Show All</a>
-                            </div>
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Single Line Chart</h6>
+                            <canvas id="bar-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Ward Disbursement</h6>
                             <canvas id="warddisbursement"></canvas>
                         </div>
                     </div>
                     <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light text-center rounded p-4 h-80">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Education Level Statistics</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="single-bar" class="h-50"></canvas>
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Disbursement by Type Chart</h6>
+                            <canvas id="type-disbursed"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Education Level Chart </h6>
+                            <canvas id="school-statistics"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Statistics Chart End -->
-
-
-            <!-- Data Entry Clerks Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Data Entry Clerks</h6>
-                        <a href="">Show All</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Entry no</th>
-                                    <th scope="col">Clerk</th>
-                                    <th scope="col">Entries</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>clesmer23</td>
-                                    <td>Esmer Esike</td>
-                                    <td>212</td>
-                                    <td>Active</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>clemoki49</td>
-                                    <td>Monica Kiambu</td>
-                                    <td>152</td>
-                                    <td>Active</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>cledesel49</td>
-                                    <td>Desmond Eliot</td>
-                                    <td>302</td>
-                                    <td>Active</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- Data Entry Clerks End -->
 
 
             <!-- Footer Start -->
@@ -336,7 +217,6 @@
         </div>
         <!-- Content End -->
 
-
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
@@ -352,7 +232,7 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Template Javascript -->
+
     <script src="js/main.js"></script>
 </body>
 
