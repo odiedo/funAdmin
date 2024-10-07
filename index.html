@@ -29,6 +29,24 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .rotating-hourglass {
+            animation: rotate 2s linear infinite;
+        }
+    
+        .stopped-hourglass {
+            animation: none;
+        }
+    
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -181,8 +199,11 @@
                                 <p class="mb-2">Data Sync</p>
                                 <h6 class="mb-0">4/60</h6>
                             </div>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dataSyncModal">
+                                Sync Now
+                            </button>
                         </div>
-                    </div>
+                    </div>                    
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-file-alt fa-3x text-primary"></i>
@@ -232,6 +253,62 @@
             </div>
             <!-- Summary cards End -->
 
+            <!-- Data Sync Modal -->
+            <div class="modal fade" id="dataSyncModal" tabindex="-1" aria-labelledby="dataSyncModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="dataSyncModalLabel">
+                                <i class="fa fa-cogs me-2 text-primary"></i> Data Sync Options
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Upload Data Section -->
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div>
+                                    <i class="fa fa-upload fa-3x text-info"></i>
+                                    <span class="ms-3">Upload Data</span>
+                                </div>
+                                <button class="btn btn-outline-info btn-lg" id="uploadDataBtn">
+                                    <i class="fa fa-arrow-up me-1"></i> Upload Now
+                                </button>
+                            </div>
+                            
+                            <!-- Save Backup Section -->
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <div>
+                                    <i class="fa fa-save fa-3x text-success"></i>
+                                    <span class="ms-3">Save Backup</span>
+                                </div>
+                                <button class="btn btn-outline-success btn-lg" id="saveBackupBtn">
+                                    <i class="fa fa-hdd me-1"></i> Backup Now
+                                </button>
+                            </div>
+
+                            <!-- Animation Containers -->
+                            <div id="uploadAnimation" class="mt-4 d-none text-center">
+                                <i class="fa fa-hourglass-half fa-4x text-info rotating-hourglass" id="uploadHourglass"></i>
+                                <div class="progress mt-3" style="height: 25px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" id="uploadProgress" style="width: 0%">Uploading...</div>
+                                </div>
+                            </div>
+
+                            <div id="backupAnimation" class="mt-4 d-none text-center">
+                                <i class="fa fa-hourglass-half fa-4x text-success rotating-hourglass" id="backupHourglass"></i>
+                                <div class="progress mt-3" style="height: 25px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="backupProgress" style="width: 0%">Saving Backup...</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
             <!-- Statistics  Chart Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -376,6 +453,68 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        const uploadDataBtn = document.getElementById('uploadDataBtn');
+        const saveBackupBtn = document.getElementById('saveBackupBtn');
+        const uploadAnimation = document.getElementById('uploadAnimation');
+        const backupAnimation = document.getElementById('backupAnimation');
+        const uploadProgress = document.getElementById('uploadProgress');
+        const backupProgress = document.getElementById('backupProgress');
+        const uploadHourglass = document.getElementById('uploadHourglass');
+        const backupHourglass = document.getElementById('backupHourglass');
+    
+        uploadDataBtn.addEventListener('click', function() {
+            // Disable Backup button while upload is in progress
+            saveBackupBtn.disabled = true;
+    
+            // Show upload animation
+            uploadAnimation.classList.remove('d-none');
+            let progress = 0;
+    
+            // Simulate upload progress
+            const interval = setInterval(() => {
+                progress += 10;
+                uploadProgress.style.width = progress + '%';
+                uploadProgress.textContent = progress + '% Completed';
+    
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    // Stop hourglass animation
+                    uploadHourglass.classList.add('stopped-hourglass');
+                    uploadProgress.classList.remove('progress-bar-animated');
+                    uploadProgress.textContent = 'Upload Complete!';
+                    // Enable Backup button after upload completes
+                    saveBackupBtn.disabled = false;
+                }
+            }, 500);
+        });
+    
+        saveBackupBtn.addEventListener('click', function() {
+            // Disable Upload button while backup is in progress
+            uploadDataBtn.disabled = true;
+    
+            // Show backup animation
+            backupAnimation.classList.remove('d-none');
+            let progress = 0;
+    
+            // Simulate backup progress
+            const interval = setInterval(() => {
+                progress += 15;
+                backupProgress.style.width = progress + '%';
+                backupProgress.textContent = progress + '% Completed';
+    
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    // Stop hourglass animation
+                    backupHourglass.classList.add('stopped-hourglass');
+                    backupProgress.classList.remove('progress-bar-animated');
+                    backupProgress.textContent = 'Backup Complete!';
+                    // Enable Upload button after backup completes
+                    uploadDataBtn.disabled = false;
+                }
+            }, 400);
+        });
+    </script>
 </body>
 
 </html>
