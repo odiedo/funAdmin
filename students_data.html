@@ -29,6 +29,39 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 9999; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 40%;
+        }
+
+        .modal-footer {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #progress-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -60,7 +93,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="verification.html" class="nav-item nav-link "><i class="fa fa-check me-2"></i>Verification</a>
+                    <a href="verification.html" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
                     <a href="analysis.html" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
                     <a href="letters.html" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
                     <a href="reports.html" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
@@ -169,176 +202,133 @@
                 </div>
             </nav>
             <!-- Navbar End -->
-
-
-            <!-- Summary cards Start -->
+            <!-- Students Data Page -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-sync-alt fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Data Sync</p>
-                                <h6 class="mb-0">4/60</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-file-alt fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Applications</p>
-                                <h6 class="mb-0">4,200</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-wheelchair fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">PWDs</p>
-                                <h6 class="mb-0">34</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-child fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Partial Orphans</p>
-                                <h6 class="mb-0">89</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-users fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Orphans</p>
-                                <h6 class="mb-0">119</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-user fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Single Parents</p>
-                                <h6 class="mb-0">34</h6>
+                <div class="row">
+                    <div class="col-md-12 bg-light">
+                        <div class="handles p-2">
+                            <div class="d-flex justify-content-between">
+                                <h3 class="">Students List - Kajiado East</h3>
+                                <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Summary cards End -->
 
-            <!-- Statistics  Chart Start -->
-            <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light text-center rounded p-4 h-80">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Ward Counts</h6>
-                            </div>
-                            <div class="container">
-                                <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?kaputiei_north">
-                                        <span>Kaputiei North Ward</span>
-                                    </a>
-                                    <span>2400</span>
-                                </div>
-                                <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?kitengela">
-                                        <span>Kitengela Ward</span>
-                                    </a>
-                                    <span>1930</span>
-                                </div>
-                                <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?olkeri">
-                                        <span>Oloosirkon/Sholinke Ward</span>
-                                    </a>
-                                    <span>1830</span>
-                                </div>
-                                <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?kenyawa_poka">
-                                        <span>Kenyawa Poka Ward</span>
-                                    </a>
-                                    <span>2400</span>
-                                </div>
-                                <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?imilol">
-                                        <span>Imaroro Ward</span>
-                                    </a>
-                                    <span>1300</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-12">
+                        <h5 class="py-4"><i class="fas fa-users"></i> List of Students</h5>
                         
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Ward Statistics</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="warddisbursement"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Statistics Chart End -->
-
-
-            <!-- Data Entry Clerks Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Data Entry Clerks</h6>
-                        <a href="">Show All</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <!-- Table for Student Data -->
+                        <table class="table table-striped">
                             <thead>
-                                <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Entry no</th>
-                                    <th scope="col">Clerk</th>
-                                    <th scope="col">Entries</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Admission No</th>
+                                    <th>Level</th>
+                                    <th>Class</th>
+                                    <th>School</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="studentTableBody">
+                                <!-- Page 1 (Students 1-5) -->
                                 <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>clesmer23</td>
-                                    <td>Esmer Esike</td>
-                                    <td>212</td>
-                                    <td>Active</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td><a href="student.html">John Mwangi</a></td>
+                                    <td>ADM202101</td>
+                                    <td>Secondary</td>
+                                    <td>Form 3</td>
+                                    <td>Kajiado High School</td>
                                 </tr>
                                 <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>clemoki49</td>
-                                    <td>Monica Kiambu</td>
-                                    <td>152</td>
-                                    <td>Active</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td><a href="student.html">Mary Achieng</a></td>
+                                    <td>ADM202102</td>
+                                    <td>Tertiary</td>
+                                    <td>1st Year</td>
+                                    <td>Kitengela Polytechnic</td>
                                 </tr>
                                 <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>cledesel49</td>
-                                    <td>Desmond Eliot</td>
-                                    <td>302</td>
-                                    <td>Active</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td><a href="student.html">Peter Mutua</a></td>
+                                    <td>ADM202103</td>
+                                    <td>Secondary</td>
+                                    <td>Form 4</td>
+                                    <td>Ngauriai Boys High</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="student.html">Ann Wambui</a></td>
+                                    <td>ADM202104</td>
+                                    <td>Secondary</td>
+                                    <td>Form 2</td>
+                                    <td>Epz Girls Secondary</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="student.html">James Kiprono</a></td>
+                                    <td>ADM202105</td>
+                                    <td>Tertiary</td>
+                                    <td>2nd Year</td>
+                                    <td>Kajiado East Technical Institute</td>
+                                </tr>
+                                
+                                <!-- Page 2 (Students 6-10) -->
+                                <tr style="display: none;">
+                                    <td><a href="student.html">Christine Njeri</a></td>
+                                    <td>ADM202106</td>
+                                    <td>Tertiary</td>
+                                    <td>3rd Year</td>
+                                    <td>Kajiado College</td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td><a href="student.html">Alex Odhiambo</a></td>
+                                    <td>ADM202107</td>
+                                    <td>Secondary</td>
+                                    <td>Form 1</td>
+                                    <td>Kitengela Secondary School</td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td><a href="student.html">Beatrice Mutiso</a></td>
+                                    <td>ADM202108</td>
+                                    <td>Secondary</td>
+                                    <td>Form 4</td>
+                                    <td>Kajiado Girls High</td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td><a href="student.html">Samuel Ouma</a></td>
+                                    <td>ADM202109</td>
+                                    <td>Tertiary</td>
+                                    <td>2nd Year</td>
+                                    <td>Kisaju Polytechnic</td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td><a href="student.html">Susan Wanjiku</a></td>
+                                    <td>ADM202110</td>
+                                    <td>Secondary</td>
+                                    <td>Form 2</td>
+                                    <td>Namanga Secondary School</td>
                                 </tr>
                             </tbody>
                         </table>
+                
+                        <!-- Pagination Controls -->
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" id="prevPage" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#" id="page1">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#" id="page2">2</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" id="nextPage" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
+                
             </div>
-            <!-- Data Entry Clerks End -->
+
 
 
             <!-- Footer Start -->
@@ -358,7 +348,6 @@
         </div>
         <!-- Content End -->
 
-
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
@@ -374,8 +363,57 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Template Javascript -->
+    <!-- Auto-vetting Script -->
     <script src="js/main.js"></script>
+    <!-- Script to Handle Pagination -->
+<script>
+    const rowsPerPage = 5;
+    const rows = document.querySelectorAll('tbody tr');
+    const paginationLinks = document.querySelectorAll('.pagination a');
+    
+    function showPage(page) {
+        let start = (page - 1) * rowsPerPage;
+        let end = start + rowsPerPage;
+        
+        rows.forEach((row, index) => {
+            if (index >= start && index < end) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+        
+        // Update active page class
+        paginationLinks.forEach(link => link.parentElement.classList.remove('active'));
+        document.getElementById('page' + page).parentElement.classList.add('active');
+    }
+
+    document.getElementById('page1').addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage(1);
+    });
+
+    document.getElementById('page2').addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage(2);
+    });
+
+    document.getElementById('prevPage').addEventListener('click', (e) => {
+        e.preventDefault();
+        let activePage = document.querySelector('.pagination .active a').textContent;
+        if (activePage > 1) showPage(+activePage - 1);
+    });
+
+    document.getElementById('nextPage').addEventListener('click', (e) => {
+        e.preventDefault();
+        let activePage = document.querySelector('.pagination .active a').textContent;
+        if (activePage < 2) showPage(+activePage + 1);
+    });
+
+    // Initially show first page
+    showPage(1);
+</script>
+
 </body>
 
 </html>
