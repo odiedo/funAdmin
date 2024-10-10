@@ -45,7 +45,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>FAS</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -59,17 +59,17 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="verification.html" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
-                    <a href="analysis.html" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
-                    <a href="letters.html" class="nav-item nav-link active"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
-                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
-                    <a href="bulk.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="verification.php" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
+                    <a href="analysis.php" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
+                    <a href="letters.php" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
+                    <a href="reports.php" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
+                    <a href="bulk.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-h me-2"></i>Others</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signup.html" class="dropdown-item">Delete account</a>
-                            <a href="logout.html" class="dropdown-item">Log Out</a>
+                            <a href="delete_account.php" class="dropdown-item">Delete account</a>
+                            <a href="logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -169,113 +169,133 @@
                 </div>
             </nav>
             <!-- Navbar End -->
-
-            <!-- Letter Processing Section Start -->
+            <!-- Students Data Page -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row mb-2">
+                <div class="row">
                     <div class="col-md-12 bg-light">
                         <div class="handles p-2">
-                            <div class="left-issue d-flex justify-content-between">
-                                <h3 class="">Letter(s)  </h3>
+                            <div class="d-flex justify-content-between">
+                                <h3 class="">Students List - Kajiado East</h3>
                                 <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="row g-4">
-                            <!-- Letters Card -->
-                            <div class="col-md-12">
-                                <div class="card text-center p-3 shadow-sm border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-envelope fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Letters</h5>
-                                        <p class="text-muted">Manage All</p>
-                                        <div class="dflex justify-content-between">
-                                            <a href="letter_processing.html?secondary" class="btn btn-primary btn-sm">Secondary (321)</a>
-                                            <a href="letter_processing.html?tertiary" class="btn btn-secondary btn-sm">Tertiary (45)</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- History Card -->
-                            <div class="col-md-6">
-                                <div class="card text-center p-3 shadow-sm border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-history fa-2x mb-3 text-success"></i>
-                                        <h5 class="card-title">History</h5>
-                                        <p class="text-muted">Track Activities</p>
-                                        <a href="history.html" class="btn btn-success btn-sm">View History</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Acknowledgement Letters Card -->
-                            <div class="col-md-6">
-                                <div class="card text-center p-3 shadow-sm border-0">
-                                    <div class="card-body">
-                                        <i class="fas fa-check-circle fa-2x mb-3 text-info"></i>
-                                        <h5 class="card-title">Acknowledgements</h5>
-                                        <p class="text-muted">School Letters</p>
-                                        <a href="acknowledgement.html" class="btn btn-info btn-sm">View Letters</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5">
-                        <h5 class="text-center bg-light p-3">Top Schools</h5>
-                        <div id="topSchoolsCarousel" class="carousel slide shadow-sm" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="card text-center p-3">
-                                        <i class="fas fa-school fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Kolanya Boys High</h5>
-                                        <h5 class="text-muted">Ksh 1,200,000</h5>
-                                        <p class="text-muted">100 Students</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card text-center p-3">
-                                        <i class="fas fa-school fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Kamuria Secondary</h5>
-                                        <h5 class="text-muted">Ksh 1,050,000</h5>
-                                        <p class="text-muted">100 Students</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card text-center p-3">
-                                        <i class="fas fa-school fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Kamusinga Boys High</h5>
-                                        <h5 class="text-muted">Ksh 900,500</h5>
-                                        <p class="text-muted">100 Students</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="card text-center p-3">
-                                        <i class="fas fa-school fa-2x mb-3 text-primary"></i>
-                                        <h5 class="card-title">Alliance High</h5>
-                                        <h5 class="text-muted">Ksh 850,400</h5>
-                                        <p class="text-muted">100 Students</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#topSchoolsCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#topSchoolsCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
+                <div class="row g-4">
+                    <div class="col-md-12">
+                        <h5 class="py-4"><i class="fas fa-users"></i> List of Students</h5>
+                        
+                        <!-- Table for Student Data -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Admission No</th>
+                                    <th>Level</th>
+                                    <th>Class</th>
+                                    <th>School</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentTableBody">
+                                <tr>
+                                    <td><a href="student.php">John Mwangi</a></td>
+                                    <td>ADM202101</td>
+                                    <td>Secondary</td>
+                                    <td>Form 3</td>
+                                    <td>Kajiado High School</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="student.php">Mary Achieng</a></td>
+                                    <td>ADM202102</td>
+                                    <td>Tertiary</td>
+                                    <td>1st Year</td>
+                                    <td>Kitengela Polytechnic</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="student.php">Peter Mutua</a></td>
+                                    <td>ADM202103</td>
+                                    <td>Secondary</td>
+                                    <td>Form 4</td>
+                                    <td>Ngauriai Boys High</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="student.php">Ann Wambui</a></td>
+                                    <td>ADM202104</td>
+                                    <td>Secondary</td>
+                                    <td>Form 2</td>
+                                    <td>Epz Girls Secondary</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="student.php">James Kiprono</a></td>
+                                    <td>ADM202105</td>
+                                    <td>Tertiary</td>
+                                    <td>2nd Year</td>
+                                    <td>Kajiado East Technical Institute</td>
+                                </tr>
+                                
+                                <!-- Page 2 (Students 6-10) -->
+                                <tr style="display: none;">
+                                    <td><a href="student.php">Christine Njeri</a></td>
+                                    <td>ADM202106</td>
+                                    <td>Tertiary</td>
+                                    <td>3rd Year</td>
+                                    <td>Kajiado College</td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td><a href="student.php">Alex Odhiambo</a></td>
+                                    <td>ADM202107</td>
+                                    <td>Secondary</td>
+                                    <td>Form 1</td>
+                                    <td>Kitengela Secondary School</td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td><a href="student.php">Beatrice Mutiso</a></td>
+                                    <td>ADM202108</td>
+                                    <td>Secondary</td>
+                                    <td>Form 4</td>
+                                    <td>Kajiado Girls High</td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td><a href="student.php">Samuel Ouma</a></td>
+                                    <td>ADM202109</td>
+                                    <td>Tertiary</td>
+                                    <td>2nd Year</td>
+                                    <td>Kisaju Polytechnic</td>
+                                </tr>
+                                <tr style="display: none;">
+                                    <td><a href="student.php">Susan Wanjiku</a></td>
+                                    <td>ADM202110</td>
+                                    <td>Secondary</td>
+                                    <td>Form 2</td>
+                                    <td>Namanga Secondary School</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                
+                        <!-- Pagination Controls -->
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" id="prevPage" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#" id="page1">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#" id="page2">2</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" id="nextPage" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
+                
             </div>
-            <!-- Letter Processing Section End -->
+
+
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
@@ -309,8 +329,57 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-
+    <!-- Auto-vetting Script -->
     <script src="js/main.js"></script>
+    <!-- Script to Handle Pagination -->
+<script>
+    const rowsPerPage = 5;
+    const rows = document.querySelectorAll('tbody tr');
+    const paginationLinks = document.querySelectorAll('.pagination a');
+    
+    function showPage(page) {
+        let start = (page - 1) * rowsPerPage;
+        let end = start + rowsPerPage;
+        
+        rows.forEach((row, index) => {
+            if (index >= start && index < end) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+        
+        // Update active page class
+        paginationLinks.forEach(link => link.parentElement.classList.remove('active'));
+        document.getElementById('page' + page).parentElement.classList.add('active');
+    }
+
+    document.getElementById('page1').addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage(1);
+    });
+
+    document.getElementById('page2').addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage(2);
+    });
+
+    document.getElementById('prevPage').addEventListener('click', (e) => {
+        e.preventDefault();
+        let activePage = document.querySelector('.pagination .active a').textContent;
+        if (activePage > 1) showPage(+activePage - 1);
+    });
+
+    document.getElementById('nextPage').addEventListener('click', (e) => {
+        e.preventDefault();
+        let activePage = document.querySelector('.pagination .active a').textContent;
+        if (activePage < 2) showPage(+activePage + 1);
+    });
+
+    // Initially show first page
+    showPage(1);
+</script>
+
 </body>
 
 </html>

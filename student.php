@@ -29,39 +29,6 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <style>
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 9999; 
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 40%;
-        }
-
-        .modal-footer {
-            display: none;
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        #progress-text {
-            font-size: 18px;
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 <body>
@@ -78,7 +45,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>FAS</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -92,17 +59,17 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="verification.html" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
-                    <a href="analysis.html" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
-                    <a href="letters.html" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
-                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
-                    <a href="bulk.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="verification.php" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
+                    <a href="analysis.php" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
+                    <a href="letters.php" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
+                    <a href="reports.php" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
+                    <a href="bulk.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-h me-2"></i>Others</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signup.html" class="dropdown-item">Delete account</a>
-                            <a href="logout.html" class="dropdown-item">Log Out</a>
+                            <a href="delete_account.php" class="dropdown-item">Delete account</a>
+                            <a href="logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -115,7 +82,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -202,60 +169,150 @@
                 </div>
             </nav>
             <!-- Navbar End -->
-
-            <!-- Location Summary and Sublocations -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row">
-                    <div class="col-md-12 bg-light">
-                        <div class="handles p-2">
-                            <div class="left-issue d-flex justify-content-between">
-                                <h3 class="">Kitengela Location</h3>
-                                <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
+            <div class="container mt-4">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-md-12 bg-light">
+                            <div class="handles p-2">
+                                <div class="d-flex justify-content-between">
+                                    <h3 class="">Student Data - Kajiado East</h3>
+                                    <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row g-4">
+                        <!-- Personal Information Column -->
+                        <div class="col-md-4" style="font-size: 0.85rem;">
+                            <h4 class="text-success text-center" style="font-size: 1rem;"><i class="fas fa-user fa-3x"></i><br> Personal Info</h4>
+                            <div class="d-flex justify-content-between">
+                                <strong>Application ID:</strong> <span>APP20241001</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Name:</strong> <span>John Mwangi</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Gender:</strong> <span>Male</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Date of Birth:</strong> <span>12th June 2005</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Birth Certificate No:</strong> <span>BC202141234</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Postal Address:</strong> <span>P.O. Box 123, Kajiado</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Phone:</strong> <span>+254 712 345 678</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Email:</strong> <span>john.mwangi@example.com</span>
+                            </div>
+                        </div>
 
-                <!-- Summary Section -->
-                <div class="row g-4">
-                    <div class="col-md-8">
-                        <h5 class="py-4"> <i class="fas fa-angle-double-right"></i> Sublocations in Kitengela</h5>
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between py-2">
-                                <a href="sub_location.html?sub_location=Epz">Epz Sublocation</a>
-                                <span>1,200 Applicants</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between  py-2">
-                                <a href="sub_location.html?sub_location=New Valley">New Valley Sublocation</a>
-                                <span>800 Applicants</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between py-2">
-                                <a href="sub_location.html?sub_location=Milimani">Milimani Sublocation</a>
-                                <span>600 Applicants</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between py-2">
-                                <a href="sub_location.html?sub_location=Kimalat">Kimalat Sublocation</a>
-                                <span>500 Applicants</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between py-2">
-                                <a href="sub_location.html?sub_location=Yukos">Yukos Sublocation</a>
-                                <span>300 Applicants</span>
-                            </li>
-                        </ul>
+                        <!-- Education and Financial Information Column -->
+                        <div class="col-md-4" style="font-size: 0.85rem;">
+                            <h4 class="text-success text-center" style="font-size: 1rem;"><i class="fas fa-school fa-3x"></i> <br> Education Info</h4>
+                            <div class="d-flex justify-content-between">
+                                <strong>School:</strong> <span>Kajiado High School</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Admission No:</strong> <span>ADM202101</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Class:</strong> <span>Form 4</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Year of Admission:</strong> <span>2021</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Course Duration:</strong> <span>4 Years</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Expected Completion:</strong> <span>2024</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Education Level:</strong> <span>Secondary</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Fee Balance:</strong> <span>Kshs 15,000</span>
+                            </div>
+                        </div>
+
+                        <!-- Family Information Column -->
+                        <div class="col-md-4" style="font-size: 0.85rem;">
+                            <h4 class="text-success text-center" style="font-size: 1rem;"><i class="fas fa-users fa-3x"></i><br> Parents Info</h4>
+                            <div class="d-flex justify-content-between">
+                                <strong>Father's Name:</strong> <span>Peter Mwangi</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Father's ID Number:</strong> <span>12345678</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Father's Phone:</strong> <span>+254 722 123 456</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Father Alive/Deceased:</strong> <span>Alive</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Father's Occupation:</strong> <span>Farmer</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Father's Income:</strong> <span>Kshs 30,000</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Mother's Name:</strong> <span>Mary Wambui</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Mother's ID Number:</strong> <span>23456789</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Mother's Phone:</strong> <span>+254 733 654 321</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Mother Alive/Deceased:</strong> <span>Alive</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Mother's Occupation:</strong> <span>Teacher</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Mother's Income:</strong> <span>Kshs 40,000</span>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="col-md-4">
-                        <h5 class="py-4">Summary for Kitengela Ward</h5>
-                        <ul class="list-group mb-4">
-                            <li class="list-group-item d-flex justify-content-between"><span>Kitengela Location:</span> <span>3,400</span></li>
-                            <li class="list-group-item d-flex justify-content-between"><span>PWDs:</span> <span>150</span></li>
-                            <li class="list-group-item d-flex justify-content-between"><span>Single Parents:</span> <span>800</span></li>
-                            <li class="list-group-item d-flex justify-content-between"><span>Total Orphans:</span> <span>200</span></li>
-                            <li class="list-group-item d-flex justify-content-between"><span>Partial Orphans:</span> <span>450</span></li>
-                            <li class="list-group-item d-flex justify-content-between"><span>Others:</span> <span>450</span></li>
-                        </ul>
-                    </div>
+                </div>
+                
+                
+                
+            
+                <!-- Attachments Section -->
+                <div class="section mb-4">
+                    <h2 class="text-success">Attachments</h2>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Birth Certificate</th>
+                            <td><a href="#">Download</a></td>
+                            <th>ID Photo (Front)</th>
+                            <td><a href="#">Download</a></td>
+                        </tr>
+                        <tr>
+                            <th>ID Photo (Back)</th>
+                            <td><a href="#">Download</a></td>
+                            <th>Report Card</th>
+                            <td><a href="#">Download</a></td>
+                        </tr>
+                        <tr>
+                            <th>Fee Balance Proof</th>
+                            <td><a href="#">Download</a></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
+            
+
+
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">

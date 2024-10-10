@@ -63,7 +63,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>FAS</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -77,17 +77,17 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="verification.html" class="nav-item nav-link "><i class="fa fa-check me-2"></i>Verification</a>
-                    <a href="analysis.html" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
-                    <a href="letters.html" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
-                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
-                    <a href="bulk.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="verification.php" class="nav-item nav-link "><i class="fa fa-check me-2"></i>Verification</a>
+                    <a href="analysis.php" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
+                    <a href="letters.php" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
+                    <a href="reports.php" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
+                    <a href="bulk.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-h me-2"></i>Others</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signup.html" class="dropdown-item">Delete account</a>
-                            <a href="logout.html" class="dropdown-item">Log Out</a>
+                            <a href="delete_account.php" class="dropdown-item">Delete account</a>
+                            <a href="logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -265,37 +265,34 @@
                         </div>
                         <div class="modal-body">
                             <!-- Upload Data Section -->
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div>
-                                    <i class="fa fa-upload fa-3x text-info"></i>
-                                    <span class="ms-3">Upload Data</span>
+                            <div class="d-flex align-items-center justify-content-around  mb-4">
+                                <div class="align-items-center text-center mb-4">
+                                    <div id="uploadDataBtn">
+                                        <i class="fa fa-sync fa-3x text-info"></i><br>
+                                        <span class="ms-3 font-weight-bold">Sync Data</span>
+                                    </div>
                                 </div>
-                                <button class="btn btn-outline-info btn-lg" id="uploadDataBtn">
-                                    <i class="fa fa-arrow-up me-1"></i> Upload Now
-                                </button>
-                            </div>
-                            
-                            <!-- Save Backup Section -->
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div>
-                                    <i class="fa fa-save fa-3x text-success"></i>
-                                    <span class="ms-3">Save Backup</span>
+                                <!-- Save Backup Section -->
+                                <div class="align-items-center text-center  mb-4">
+                                    <div id="saveBackupBtn">
+                                        <i class="fa fa-cloud-download-alt fa-3x text-success"></i><br>
+                                        <span class="ms-3">Save Backup</span>
+                                    </div>
                                 </div>
-                                <button class="btn btn-outline-success btn-lg" id="saveBackupBtn">
-                                    <i class="fa fa-hdd me-1"></i> Backup Now
-                                </button>
                             </div>
 
+                            
+                            
                             <!-- Animation Containers -->
                             <div id="uploadAnimation" class="mt-4 d-none text-center">
-                                <i class="fa fa-hourglass-half fa-4x text-info rotating-hourglass" id="uploadHourglass"></i>
+                                <i class="fa fa-sync fa-2x text-info rotating-hourglass" id="uploadHourglass"></i>
                                 <div class="progress mt-3" style="height: 25px;">
                                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" id="uploadProgress" style="width: 0%">Uploading...</div>
                                 </div>
                             </div>
 
                             <div id="backupAnimation" class="mt-4 d-none text-center">
-                                <i class="fa fa-hourglass-half fa-4x text-success rotating-hourglass" id="backupHourglass"></i>
+                                <i class="fa fa-hourglass-half fa-2x text-success rotating-hourglass" id="backupHourglass"></i>
                                 <div class="progress mt-3" style="height: 25px;">
                                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="backupProgress" style="width: 0%">Saving Backup...</div>
                                 </div>
@@ -319,31 +316,31 @@
                             </div>
                             <div class="container">
                                 <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?kaputiei_north">
+                                    <a href="locations.php?kaputiei_north">
                                         <span>Kaputiei North Ward</span>
                                     </a>
                                     <span>2400</span>
                                 </div>
                                 <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?kitengela">
+                                    <a href="locations.php?kitengela">
                                         <span>Kitengela Ward</span>
                                     </a>
                                     <span>1930</span>
                                 </div>
                                 <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?olkeri">
+                                    <a href="locations.php?olkeri">
                                         <span>Oloosirkon/Sholinke Ward</span>
                                     </a>
                                     <span>1830</span>
                                 </div>
                                 <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?kenyawa_poka">
+                                    <a href="locations.php?kenyawa_poka">
                                         <span>Kenyawa Poka Ward</span>
                                     </a>
                                     <span>2400</span>
                                 </div>
                                 <div class="d-flex justify-content-between py-2">
-                                    <a href="locations.html?imilol">
+                                    <a href="locations.php?imilol">
                                         <span>Imaroro Ward</span>
                                     </a>
                                     <span>1300</span>

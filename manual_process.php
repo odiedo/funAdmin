@@ -45,7 +45,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>FAS</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -59,17 +59,17 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="verification.html" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
-                    <a href="analysis.html" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
-                    <a href="letters.html" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
-                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
-                    <a href="bulk.html" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Bulk Action</a>
+                    <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="verification.php" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
+                    <a href="analysis.php" class="nav-item nav-link active"><i class="fa fa-chart-line me-2"></i>Analysis</a>
+                    <a href="letters.php" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
+                    <a href="reports.php" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
+                    <a href="bulk.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-h me-2"></i>Others</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signup.html" class="dropdown-item">Delete account</a>
-                            <a href="logout.html" class="dropdown-item">Log Out</a>
+                            <a href="delete_account.php" class="dropdown-item">Delete account</a>
+                            <a href="logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -170,134 +170,76 @@
             </nav>
             <!-- Navbar End -->
 
-            <div class="container-fluid mt-4">
+            <!-- Auto-vetting Form Start -->
+            <div class="container-fluid pt-4 px-4">
                 <div class="row">
-                    <div class="col-md-7 shadow ml-4">
-                        <!-- Tabs for navigation -->
-                        <ul class="nav nav-tabs" id="phoneTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="keypad-tab" data-bs-toggle="tab" href="#keypad" role="tab">Compose</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="recents-tab" data-bs-toggle="tab" href="#recents" role="tab">Recents</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="contacts-tab" data-bs-toggle="tab" href="#contacts" role="tab">Contacts</a>
-                            </li>
-                        </ul>
-            
-                        <!-- Tab content -->
-                        <div class="tab-content" id="phoneTabContent">
-                            <!-- Keypad tab -->
-                            <div class="tab-pane fade show active" id="keypad" role="tabpanel">
-                                <div class="keypad mt-3 p-3">
-                                    <div class="d-flex justify-content-between">
-                                        <h3>Compose Message</h3>
-                                        <span class="tokens p-2">300</span>
-                                    </div>
-                                    <div>
-                                        <label for="group">Group:</label>
-                                        <select name="group" id="group" class="form-control shadow">
-                                            <option selected disabled>--- Select Group ---</option>
-                                            <option value="all-wards">All Wards</option>
-                                            <option value="kaputiei-north">Kaputiei North</option>
-                                            <option value="kaputiei-south">Kaputiei South</option>
-                                            <option value="kenyawa-poka">Kenyawa Poka</option>
-                                            <option value="imatong">Imatong</option>
-                                        </select>
-                                        <label for="message">Message:</label>
-                                        <textarea name="message" id="message" class="form-control shadow" placeholder="Write your Message here!!!" maxlength="240" rows="4"></textarea>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <button class="btn p-3 m-4 shadow">Send</button>
-                                    </div>
-                                </div>
-                            </div>
-            
-                            <!-- Recents tab -->
-                            <div class="tab-pane fade" id="recents" role="tabpanel">
-                                <div class="recents mt-3 p-3">
-                                    <div class="d-flex justify-content-between">
-                                        <h3>Recent Messages</h3>
-                                        <span class="tokens p-2">300</span>
-                                    </div>
-                                    <ul class="list-group mt-3">
-                                        <li class="list-group-item">
-                                            Please be informed that cattle theft incidents have increased in Kenyawa Poka. Remain vigilant and report suspicious activities to the authorities immediately.
-                                            <span class="float-end text-muted">10:30 AM, 07/10/2024</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            Residents of Kaputiei North are advised to secure their livestock at night following reports of cattle thieves in the area. Stay safe.
-                                            <span class="float-end text-muted">9:15 PM, 06/10/2024</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            Cattle theft alert for Imatong ward. Please ensure you report any strange movements or suspicious activities to the local authorities.
-                                            <span class="float-end text-muted">8:45 AM, 05/10/2024</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-            
-                            <!-- Contacts tab -->
-                            <div class="tab-pane fade" id="contacts" role="tabpanel">
-                                <div class="contacts mt-3 p-3">
-                                    <div class="d-flex justify-content-between">
-                                        <h3>Contact List</h3>
-                                        <span class="tokens p-2">300</span>
-                                    </div>
-                                    <ul class="list-group mt-3">
-                                        <li class="list-group-item">Alice - Peter</li>
-                                        <li class="list-group-item">Bob - Maina</li>
-                                        <li class="list-group-item">Jane - Doe</li>
-                                    </ul>
-                                </div>
+                    <div class="col-md-12 bg-light">
+                        <div class="handles p-2">
+                            <div class="left-issue d-flex justify-content-between">
+                                <h3 class="">Manual Vetting Process</h3>
+                                <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <!-- Add User Form -->
-                        <div class="card shadow">
-                            <div class="card-header">
-                                <h4>Add User Data</h4>
+                    
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-8">
+                        <form id="manual-vet-form" class="text-center">
+                            <div class="mb-4">
+                                <label class="form-label mt-3">Please click on the issues you want to do the manual vetting:</label>
                             </div>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-parent-name.php" class="text-primary">Same Parent Name</a>
+                                    <span class="badge bg-light text-dark">100</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-father-name.php" class="text-primary">Same Father Name</a>
+                                    <span class="badge bg-light text-dark">34</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-father-id.php" class="text-primary">Same Father ID Number</a>
+                                    <span class="badge bg-light text-dark">10</span>
+
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-mother-id.php" class="text-primary">Same Mother ID Number</a>
+                                    <span class="badge bg-light text-dark">132</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-student-name.php" class="text-primary">Same Student Name</a>
+                                    <span class="badge bg-light text-dark">230</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-admission-school.php" class="text-primary">Same Student Admission Number & School</a>
+                                    <span class="badge bg-light text-dark">18</span>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>                    
+                    <div class="col-md-4 pt-4">
+                        <div class="card">
                             <div class="card-body">
-                                <form id="addUserForm">
-                                    <!-- Name Input -->
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Name:</label>
-                                        <input type="text" id="name" name="name" class="form-control shadow" placeholder="Enter full name" required>
-                                    </div>
-            
-                                    <!-- Phone Number Input -->
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Phone Number:</label>
-                                        <input type="tel" id="p/hone" name="phone" class="form-control shadow" placeholder="Enter phone number" pattern="[0-9]{10}" required>
-                                    </div>
-            
-                                    <!-- Ward Select -->
-                                    <div class="mb-3">
-                                        <label for="ward" class="form-label">Ward:</label>
-                                        <select id="ward" name="ward" class="form-control shadow" required>
-                                            <option selected disabled>--- Select Ward ---</option>
-                                            <option value="kaputiei-north">Kaputiei North</option>
-                                            <option value="kaputiei-south">Kaputiei South</option>
-                                            <option value="kenyawa-poka">Kenyawa Poka</option>
-                                            <option value="imatong">Imatong</option>
-                                        </select>
-                                    </div>
-            
-                                    <!-- Submit Button -->
-                                    <div class="d-grid">
-                                        <button type="submit" class="btn btn-primary shadow">Add User</button>
-                                    </div>
-                                </form>
+                                <h5 class="card-title text-center mb-4">Status Report</h5>
+                                <h5 class="">Vetting Progress</h5>
+                                <div class="progress mb-3">
+                                    <div id="vetting-progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                                <h5 class="card-title">Summary</h5>
+                                <ul id="vetting-summary" class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between"><span>Issues Vetted:</span> <span id="issues-count">0</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span>Total Students affected:</span> <span id="affected-count">0</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span>Remainig Students:</span> <span id="remain-count">3980</span></li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
-            
-            
+            <!-- Auto-vetting Form End -->
+
+
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">

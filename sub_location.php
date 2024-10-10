@@ -45,7 +45,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>FAS</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -59,17 +59,17 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="verification.html" class="nav-item nav-link active"><i class="fa fa-check me-2"></i>Verification</a>
-                    <a href="analysis.html" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
-                    <a href="letters.html" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
-                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
-                    <a href="bulk.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="verification.php" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
+                    <a href="analysis.php" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
+                    <a href="letters.php" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
+                    <a href="reports.php" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
+                    <a href="bulk.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-h me-2"></i>Others</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signup.html" class="dropdown-item">Delete account</a>
-                            <a href="logout.html" class="dropdown-item">Log Out</a>
+                            <a href="delete_account.php" class="dropdown-item">Delete account</a>
+                            <a href="logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -170,58 +170,69 @@
             </nav>
             <!-- Navbar End -->
 
-
-            <!-- Verification Cards Start -->
+            <!-- Sublocation Page -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <!-- Document Verification Card -->
-                    <div class="col-md-6">
-                        <div class="card bg-light border-danger">
-                            <div class="card-body text-center">
-                                <h5 class="card-title text-danger"><i class="fa fa-file-alt me-2"></i>Document Verification</h5>
-                                <p class="card-text">Status: <span class="text-danger">Missing Documents</span></p>
-                                <button class="btn btn-danger">Review</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Data Upload Verification Card -->
-                    <div class="col-md-6">
-                        <div class="card bg-light border-warning">
-                            <div class="card-body text-center">
-                                <h5 class="card-title text-warning"><i class="fa fa-cloud-upload-alt me-2"></i>Data Upload Verification</h5>
-                                <p class="card-text">Status: <span class="text-warning">Incomplete Data Uploads</span></p>
-                                <button class="btn btn-warning">Fix Issues</button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- Duplicate Entry Detection -->
-                    <div class="col-md-6">
-                        <div class="card bg-light border-primary">
-                            <div class="card-body text-center">
-                                <h5 class="card-title text-primary"><i class="fa fa-copy me-2"></i>System-Book Verification</h5>
-                                <p class="card-text">Potential duplicate detected</p>
-                                <button class="btn btn-primary">View Differences</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Suspicious Patterns -->
-                    <div class="col-md-6">
-                        <div class="card bg-light border-danger">
-                            <div class="card-body text-center">
-                                <h5 class="card-title text-danger"><i class="fa fa-exclamation-triangle me-2"></i>Suspicious Patterns</h5>
-                                <p class="card-text">Suspicious data flagged</p>
-                                <button class="btn btn-danger">Investigate</button>
+                <div class="row">
+                    <div class="col-md-12 bg-light">
+                        <div class="handles p-2">
+                            <div class="left-issue d-flex justify-content-between">
+                                <h3 class="">Epz Sublocation, Kitengela Location</h3>
+                                <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Verification Cards End -->
 
+                <div class="row g-4">
+                    <!-- List of Sublocations -->
+                    <div class="col-md-8">
+                        <h5 class="py-4"><i class="fas fa-list"></i> Epz Sub Locations</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <a href="students_data.php?sublocation=Epz Central" class="text-decoration-none text-primary">Epz Central</a>
+                                <span>240</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <a href="students_data.php?sublocation=Epz East" class="text-decoration-none text-primary">Epz East</a>
+                                <span>150</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <a href="students_data.php?sublocation=Epz West" class="text-decoration-none text-primary">Epz West</a>
+                                <span>220</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <a href="students_data.php?sublocation=Epz North" class="text-decoration-none text-primary">Epz North</a>
+                                <span>210</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h5 class="py-4"><i class="fas fa-info-circle"></i> Summary for Epz Sublocation</h5>
+                        <ul class="list-group mb-4">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total Applicants in Epz:</span> <span>1,200</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>PWDs:</span> <span>45</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Single Parents:</span> <span>180</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total Orphans:</span> <span>50</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Partial Orphans:</span> <span>100</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Others:</span> <span>825</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End Sublocation Page -->
 
 
             <!-- Footer Start -->
@@ -255,8 +266,6 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
 
