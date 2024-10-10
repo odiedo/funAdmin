@@ -45,7 +45,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>FAS</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -59,17 +59,17 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="verification.html" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
-                    <a href="analysis.html" class="nav-item nav-link active"><i class="fa fa-chart-line me-2"></i>Analysis</a>
-                    <a href="letters.html" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
-                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-file-alt me-2"></i>Reports</a>
-                    <a href="bulk.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
+                    <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="verification.php" class="nav-item nav-link"><i class="fa fa-check me-2"></i>Verification</a>
+                    <a href="analysis.php" class="nav-item nav-link"><i class="fa fa-chart-line me-2"></i>Analysis</a>
+                    <a href="letters.php" class="nav-item nav-link"><i class="fa fa-envelope-open-text me-2"></i>Letters</a>
+                    <a href="reports.php" class="nav-item nav-link active"><i class="fa fa-file-alt me-2"></i>Reports</a>
+                    <a href="bulk.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bulk Action</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-h me-2"></i>Others</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signup.html" class="dropdown-item">Delete account</a>
-                            <a href="logout.html" class="dropdown-item">Log Out</a>
+                            <a href="delete_account.php" class="dropdown-item">Delete account</a>
+                            <a href="logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -170,108 +170,35 @@
             </nav>
             <!-- Navbar End -->
 
-
-            <!-- Analysis Content Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4 p-2">
-                    <!-- Pending Applications -->
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card border-info border-3 bg-light shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Pending Applications</h5>
-                                <div class="d-flex justify-content-between">
-                                    <i class="fas fa-clock fa-2x ms-3"></i>
-                                    <h3 class="mb-0" id="pending-count">120</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Approved Applications -->
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card border-info border-3 bg-light shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Approved Applications</h5>
-                                <div class="d-flex justify-content-between">
-                                    <i class="fas fa-check-circle fa-2x ms-3"></i>
-                                    <h3 class="mb-0" id="pending-count">120</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Rejected Applications -->
-                    <div class="col-md-6 col-xl-4">
-                        <div class="card border-info border-3 bg-light shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title">Rejected Applications</h5>
-                                <div class="d-flex justify-content-between">
-                                    <i class="fas fa-times-circle fa-2x ms-3"></i>
-                                    <h3 class="mb-0" id="pending-count">120</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
                 <div class="row g-4">
-                    <!-- Auto Vetting -->
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card text-center bg-light text-primary border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-robot fa-3x mb-3"></i>
-                                <h5 class="card-title text-primary">Auto Vetting</h5>
-                                <a href="autoprocess.html" class="btn btn-outline-primary btn-sm">Run</a>
-                            </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Single Line Chart</h6>
+                            <canvas id="bar-chart"></canvas>
                         </div>
                     </div>
-            
-                    <!-- Manual Vetting -->
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card text-center bg-light text-primary border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-user-check fa-3x mb-3"></i>
-                                <h5 class="card-title text-primary">Manual Vetting</h5>
-                                <a href="manual_process.html" class="btn btn-outline-primary btn-sm">Start</a>
-                            </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Ward Disbursement</h6>
+                            <canvas id="warddisbursement"></canvas>
                         </div>
                     </div>
-            
-                    <!-- Data Completeness -->
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card text-center bg-light text-primary border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-tasks fa-3x mb-3"></i>
-                                <h5 class="card-title text-primary">Completeness</h5>
-                                <a href="#" class="btn btn-outline-primary btn-sm">Check</a>
-                            </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Disbursement by Type Chart</h6>
+                            <canvas id="type-disbursed"></canvas>
                         </div>
                     </div>
-            
-                    <!-- Fraud Detection -->
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card text-center bg-light text-primary border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-exclamation-triangle fa-3x mb-3"></i>
-                                <h5 class="card-title text-primary">Fraud Detection</h5>
-                                <a href="#" class="btn btn-outline-primary btn-sm">Run</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Regional Balance -->
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card text-center bg-light text-primary border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-star fa-3x mb-3"></i>
-                                <h5 class="card-title text-primary">Scoring/Ranking</h5>
-                                <a href="#" class="btn btn-outline-primary btn-sm">Run</a>
-                            </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Education Level Chart </h6>
+                            <canvas id="school-statistics"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Analysis Content End -->
+
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
@@ -305,7 +232,7 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Template Javascript -->
+
     <script src="js/main.js"></script>
 </body>
 
