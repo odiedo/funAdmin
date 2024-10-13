@@ -35,72 +35,6 @@ include('connection/dashboard_ward.php');
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <style>
-        .small-card-dash:hover {
-            cursor: pointer;
-            transform: scale(1.05);
-        }
-
-        .custom-upload {
-            cursor: pointer;
-            background-color: #f8f8f8;
-            border-radius: 8px;
-            padding: 20px;
-            transition: background-color 0.3s ease;
-            border: 2px solid #eee;
-        }
-
-        .custom-upload:hover {
-            background-color: #0009;
-            color: #fff;
-        }
-
-        #csv_file {
-            display: none;
-        }
-
-        /* Loading Spinner */
-        .loading-animation .spinner {
-            width: 50px;
-            height: 40px;
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        .loading-animation .spinner > div {
-            
-            height: 100%;
-            width: 6px;
-            display: inline-block;
-            animation: stretchDelay 1.2s infinite ease-in-out;
-        }
-
-        .loading-animation .spinner .rect1 {
-            animation-delay: -1.2s;
-        }
-
-        .loading-animation .spinner .rect2 {
-            animation-delay: -1.1s;
-        }
-
-        .loading-animation .spinner .rect3 {
-            animation-delay: -1.0s;
-        }
-
-        .loading-animation .spinner .rect4 {
-            animation-delay: -0.9s;
-        }
-
-        .loading-animation .spinner .rect5 {
-            animation-delay: -0.8s;
-        }
-
-        @keyframes stretchDelay {
-            0%, 40%, 100% { transform: scaleY(0.4) }
-            20% { transform: scaleY(1.0) }
-        }
-
-    </style>
 </head>
 
 <body>
@@ -242,28 +176,17 @@ include('connection/dashboard_ward.php');
                             <!-- Upload Data Section -->
                             <div class="d-flex align-items-center justify-content-around  mb-4">
                                 <div class="align-items-center text-center mb-4">
-                                    <!-- Toast for success message -->
-                                    <div id="successToast" class="toast position-fixed top-0 end-0" style="z-index: 11; display: none;" role="alert" aria-live="assertive" aria-atomic="true">
-                                        <div class="toast-header bg-success">
-                                            <strong class="me-auto text-light">Success</strong>
-                                            <button type="button" class="btn-close text-light" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    <!-- Toast for success and error message -->
+                                    <div class="toast-container position-fixed top-0 end-0 p-3">
+                                        <div id="successToast" class="toast bg-success text-white" role="alert">
+                                            <div class="toast-body" id="toastBodyappend"></div>
                                         </div>
-                                        <div class="toast-body text-success">
-                                            <strong id="toastBodyappend"> </strong>
-                                        </div>
-                                    </div>
-                                    <!-- Toast for Error message -->
-                                    <div id="errorToast" class="toast position-fixed top-0 end-0" style="z-index: 11; display: none;" role="alert" aria-live="assertive" aria-atomic="true">
-                                        <div class="toast-header bg-danger">
-                                            <strong class="me-auto text-light">Error!</strong>
-                                            <button type="button" class="btn-close text-light" data-bs-dismiss="toast" aria-label="Close"></button>
-                                        </div>
-                                        <div class="toast-body text-danger">
-                                            <strong id="toastBodyappendError"> </strong>
+                                        <div id="errorToast" class="toast bg-danger text-white" role="alert">
+                                            <div class="toast-body" id="toastBodyappendError"></div>
                                         </div>
                                     </div>
 
-                                    <!-- Single Form to Sync both Dashboard and Ward Data -->
+                                    <!-- Sync both Dashboard and Ward Data -->
                                     <form id="syncDataForm" method="post">
                                         <button type="submit" class="btn btn-transparent custom-upload">
                                             <div id="uploadDataBtn">
@@ -421,8 +344,6 @@ include('connection/dashboard_ward.php');
             </div>
             <!-- Data Entry Clerks End -->
 
-
-
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
@@ -571,57 +492,57 @@ include('connection/dashboard_ward.php');
 
     </script>
 
-<script>
-    $(document).ready(function() {
-        $("#updateEntriesBtn").click(function() {
-            $("#loadingAnimationUpdate").show();
-            $("#updateEntriesBtn").hide();
-            setTimeout(function() {
-                $.ajax({
-                    url: 'connection/clerks_entry_calculation.php',
-                    type: 'POST',
-                    success: function(response) {
-                        var result = JSON.parse(response);
-                        if (result.status === "success") {
+    <script>
+        $(document).ready(function() {
+            $("#updateEntriesBtn").click(function() {
+                $("#loadingAnimationUpdate").show();
+                $("#updateEntriesBtn").hide();
+                setTimeout(function() {
+                    $.ajax({
+                        url: 'connection/clerks_entry_calculation.php',
+                        type: 'POST',
+                        success: function(response) {
+                            var result = JSON.parse(response);
+                            if (result.status === "success") {
 
-                            $("#loadingAnimationUpdate").hide();
-                            $("#updateEntriesBtn").show();
-                            
-                            // Append success message to toast body
-                            $("#toastBodyappend").text("Clerks Entries Updated Successfully.");
+                                $("#loadingAnimationUpdate").hide();
+                                $("#updateEntriesBtn").show();
+                                
+                                // Append success message to toast body
+                                $("#toastBodyappend").text("Clerks Entries Updated Successfully.");
+
+                                // Show success toast message
+                                var successToast = new bootstrap.Toast(document.getElementById('successToast'));
+                                document.getElementById('successToast').style.display = 'block';
+                                successToast.show();
+
+                                // Hide toast after 5 seconds
+                                setTimeout(function() {
+                                    successToast.hide();
+                                }, 5000);
+                            } else {
+                                alert(result.message);
+                            }
+                        },
+                        error: function() {
+                            // Append error message to toast body
+                            $("#toastBodyappendError").text("Error updating Clerks Entries. Please try again");
 
                             // Show success toast message
-                            var successToast = new bootstrap.Toast(document.getElementById('successToast'));
-                            document.getElementById('successToast').style.display = 'block';
-                            successToast.show();
+                            var errorToast = new bootstrap.Toast(document.getElementById('errorToast'));
+                            document.getElementById('errorToast').style.display = 'block';
+                            errorToast.show();
 
-                            // Hide toast after 5 seconds
                             setTimeout(function() {
-                                successToast.hide();
+                                errorToast.hide();
                             }, 5000);
-                        } else {
-                            alert(result.message);
+                            alert("Error updating total entries. Please try again.");
                         }
-                    },
-                    error: function() {
-                        // Append error message to toast body
-                        $("#toastBodyappendError").text("Error updating Clerks Entries. Please try again");
-
-                        // Show success toast message
-                        var errorToast = new bootstrap.Toast(document.getElementById('errorToast'));
-                        document.getElementById('errorToast').style.display = 'block';
-                        errorToast.show();
-
-                        setTimeout(function() {
-                            errorToast.hide();
-                        }, 5000);
-                        alert("Error updating total entries. Please try again.");
-                    }
-                });
-            }, 10000);
+                    });
+                }, 10000);
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 

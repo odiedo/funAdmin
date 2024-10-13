@@ -135,15 +135,15 @@ include('connection/header.php');
                 <div class="row g-4">
                     <!-- Activate Vetting Process -->
                     <div class="col-md-6 col-xl-3">
-                        <div class="card text-center bg-light text-primary border-0 shadow-sm">
+                        <div class="card text-center border-0 shadow-sm small-card-dash" data-bs-toggle="modal" data-bs-target="#activateAnalysisModal">
                             <div class="card-body">
-                                <i class="fas fa-robot fa-3x mb-3"></i>
-                                <h5 class="card-title text-primary">Auto Vetting</h5>
-                                <a href="autoprocess.php" class="btn btn-outline-primary btn-sm">Run</a>
+                                <i class="far fa-lightbulb text-danger fa-3x mb-3"></i>
+                                <h5 class="card-title text-danger">Activate</h5>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Auto Vetting -->
                     <div class="col-md-6 col-xl-3">
                         <div class="card text-center bg-light text-primary border-0 shadow-sm">
                             <div class="card-body">
@@ -197,7 +197,75 @@ include('connection/header.php');
                         </div>
                     </div>
                 </div>
+                <!-- Activate analysis settings Modal -->
+                <div class="modal fade" id="activateAnalysisModal" tabindex="-1" aria-labelledby="activateAnalysisModalLabel" aria-hidden="true" style="background: #0006;">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="dataSyncModalLabel">
+                                <i class="fa fa-cogs me-2 text-primary"></i> Analysis Settings
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="toast-container position-fixed top-0 end-0 p-3">
+                                <div id="successToast" class="toast bg-success text-white" role="alert">
+                                    <div class="toast-body" id="toastBodyappend"></div>
+                                </div>
+                                <div id="errorToast" class="toast bg-danger text-white" role="alert">
+                                    <div class="toast-body" id="toastBodyappendError"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!--  Activate Analysis Section -->
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card text-center p-0 m-0 bg-light text-primary border-0 shadow-sm" id="activateData">
+                                        <div class="card-body">
+                                            <i class="fas fa-power-off text-success fa-3x mb-3"></i>
+                                            <h5 class="card-title text-success">Activate</h5>
+                                        </div>
+                                        <span>Activate Analysis Process</span>
+                                    </div>
+                                    <div id="loadingAnimation" class="loading-animation" style="display: none;">
+                                        <div class="spinner">
+                                            <div class="rect1 bg-primary"></div>
+                                            <div class="rect2 bg-primary"></div>
+                                            <div class="rect3 bg-primary"></div>
+                                            <div class="rect4 bg-primary"></div>
+                                            <div class="rect5 bg-primary"></div>
+                                        </div>
+                                        <p class="text-center"><strong>Activating...</strong></p>
+                                    </div>  
+                                </div>
+                                <!-- Reset Section -->
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card text-center bg-light text-primary border-0 shadow-sm" id="resetData">
+                                        <div class="card-body">
+                                            <i class="fas fa-undo-alt text-danger fa-3x mb-3"></i>
+                                            <h5 class="card-title text-danger">Reset</h5>
+                                        </div>
+                                        <p>Reset Analysis Data</p>
+                                    </div>
+                                    <div id="resetLoadingAnimation" class="loading-animation" style="display: none;">
+                                        <div class="spinner">
+                                            <div class="rect1 bg-primary"></div>
+                                            <div class="rect2 bg-primary"></div>
+                                            <div class="rect3 bg-primary"></div>
+                                            <div class="rect4 bg-primary"></div>
+                                            <div class="rect5 bg-primary"></div>
+                                        </div>
+                                        <p class="text-center"><strong>Resetting...</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
             
             <!-- Analysis Content End -->
 
@@ -216,6 +284,7 @@ include('connection/header.php');
             </div>
             <!-- Footer End -->
         </div>
+
         <!-- Content End -->
 
         <!-- Back to Top -->
@@ -235,6 +304,108 @@ include('connection/header.php');
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#activateData").on('click', function(e) {
+                e.preventDefault();
+                $("#activateData").hide();
+                $("#loadingAnimation").show(); 
+
+                // Manually append the "activate" field to the serialized form data
+                var formData = $(this).serialize() + "&activate=1";
+                setTimeout(function() {
+                    $.ajax({
+                        url: 'analysis/activate.php', 
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            $("#activateData").show();  
+                            $("#loadingAnimation").hide();
+
+                            if (response.includes("success")) {
+                                $("#toastBodyappend").text(response);
+                                
+                                var successToast = new bootstrap.Toast(document.getElementById('successToast'));
+                                document.getElementById('successToast').style.display = 'block';
+                                successToast.show();
+
+                                setTimeout(function() {
+                                    successToast.hide();
+                                }, 5000);
+                            } else {
+                                $("#toastBodyappendError").text(response);
+
+                                var errorToast = new bootstrap.Toast(document.getElementById('errorToast'));
+                                document.getElementById('errorToast').style.display = 'block';
+                                errorToast.show();
+
+                                setTimeout(function() {
+                                    errorToast.hide();
+                                }, 5000);
+                            }
+                        },
+                        error: function() {
+                            $("#activateData").show(); 
+                            $("#loadingAnimation").hide(); 
+                            // Display error message
+                            $("#toastBodyappendError").text("Error processing request. Please try again.");
+
+                            var errorToast = new bootstrap.Toast(document.getElementById('errorToast'));
+                            document.getElementById('errorToast').style.display = 'block';
+                            errorToast.show();
+
+                            setTimeout(function() {
+                                errorToast.hide();
+                            }, 5000);
+                        }
+                    });
+                }, 5000); 
+            });
+
+            // Reset logic
+            $("#resetData").on('click', function(e) {
+                e.preventDefault();
+                $("#resetData").hide();
+                $("#resetLoadingAnimation").show();
+                setTimeout(function() {
+                    $.ajax({
+                        url: 'analysis/reset.php',
+                        type: 'POST',
+                        data: { reset: 1 },
+                        success: function(response) {
+                            $("#resetData").show();
+                            $("#resetLoadingAnimation").hide();
+
+                            if (response.includes("success")) {
+                                $("#toastBodyappend").text(response);
+                                var successToast = new bootstrap.Toast(document.getElementById('successToast'));
+                                successToast.show();
+                                setTimeout(function() {
+                                    successToast.hide();
+                                }, 5000);
+                            } else {
+                                $("#toastBodyappendError").text(response);
+                                var errorToast = new bootstrap.Toast(document.getElementById('errorToast'));
+                                errorToast.show();
+                                setTimeout(function() {
+                                    errorToast.hide();
+                                }, 5000);
+                            }
+                        },
+                        error: function() {
+                            $("#toastBodyappendError").text("Error processing request. Please try again.");
+                            var errorToast = new bootstrap.Toast(document.getElementById('errorToast'));
+                            errorToast.show();
+                            setTimeout(function() {
+                                errorToast.hide();
+                            }, 5000);
+                        }
+                    });
+                }, 5000); 
+            });
+        });
+    </script>
+
 </body>
 
 </html>
