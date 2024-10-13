@@ -1,17 +1,7 @@
 <?php
+include('connection/conn.php');
+include('connection/header.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['insert_staff'])) {
-    // Database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "bulk_sms"; // Update with your database name
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
     // Get form input values
     $fullname = $_POST['fullname'];

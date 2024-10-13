@@ -1,3 +1,8 @@
+<?php
+include('connection/conn.php');
+include('connection/header.php');
+include('connection/sub_location_summary.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +59,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Odiedo Paul</h6>
+                        <h6 class="mb-0"><?php echo ucfirst($_SESSION['fullname']); ?></h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -81,93 +86,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Mercy sent you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Desmond sent you a message</h6>
-                                        <small>21 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Monica sent you a message</h6>
-                                        <small>28 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Odiedo Paul</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <?php include('top_nav.php'); ?>
             <!-- Navbar End -->
 
             <!-- Sublocation Page -->
@@ -183,29 +102,26 @@
                     </div>
                 </div>
 
+                <!-- Sublocation List and Summary -->
                 <div class="row g-4">
-                    <!-- List of Sublocations -->
                     <div class="col-md-8">
-                        <h5 class="py-4"><i class="fas fa-list"></i> Epz Sub Locations</h5>
+                        <h5 class="py-4"><i class="fas fa-list"></i> Sublocations in <?php echo htmlspecialchars($selectedlocation); ?></h5>
                         <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between">
-                                <a href="students_data.php?sublocation=Epz Central" class="text-decoration-none text-primary">Epz Central</a>
-                                <span>240</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <a href="students_data.php?sublocation=Epz East" class="text-decoration-none text-primary">Epz East</a>
-                                <span>150</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <a href="students_data.php?sublocation=Epz West" class="text-decoration-none text-primary">Epz West</a>
-                                <span>220</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <a href="students_data.php?sublocation=Epz North" class="text-decoration-none text-primary">Epz North</a>
-                                <span>210</span>
-                            </li>
+                            <?php if (!empty($sublocations)): ?>
+                                <?php foreach ($sublocations as $sublocation): ?>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <a href="students_data.php?sublocation=<?php echo urlencode(strtolower(str_replace(' ', '_', $sublocation['sublocation']))); ?>" class="text-decoration-none text-primary">
+                                            <?php echo htmlspecialchars($sublocation['sublocation']); ?>
+                                        </a>
+                                        <span><?php echo number_format($sublocation['sublocation_tot']); ?></span>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <li class="list-group-item">No sublocation data available for this location.</li>
+                            <?php endif; ?>
                         </ul>
                     </div>
+
 
                     <div class="col-md-4">
                         <h5 class="py-4"><i class="fas fa-info-circle"></i> Summary for Epz Sublocation</h5>
