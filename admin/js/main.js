@@ -66,12 +66,12 @@
         data: {
             labels: ["malaba central", "Malaba South", "Malaba Nort", "Ang'urai South", "Ang'urai North", "Ang'urai East"],
             datasets: [{
-                    label: "Total Disbursed",
+                    label: "Secondary Level",
                     data: [1320, 1230, 1280, 1340, 1380, 1250],
                     backgroundColor: "rgba(0, 156, 255, .7)"
                 },
                 {
-                    label: "Total Applications",
+                    label: "Tertiary Level",
                     data: [1420, 1530, 1380, 1640, 1580, 1450],
                     backgroundColor: "rgba(0, 156, 255, .3)"
                 }

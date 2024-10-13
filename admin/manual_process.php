@@ -1,3 +1,7 @@
+<?php
+include('connection/conn.php');
+include('connection/header.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +58,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Odiedo Paul</h6>
+                        <h6 class="mb-0"><?php echo ucfirst($_SESSION['fullname']); ?></h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -81,93 +85,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Mercy sent you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Desmond sent you a message</h6>
-                                        <small>21 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Monica sent you a message</h6>
-                                        <small>28 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Odiedo Paul</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <?php include('top_nav.php'); ?>
             <!-- Navbar End -->
 
             <!-- Auto-vetting Form Start -->
@@ -176,7 +94,7 @@
                     <div class="col-md-12 bg-light">
                         <div class="handles p-2">
                             <div class="left-issue d-flex justify-content-between">
-                                <h3 class="">Same Parent Name</h3>
+                                <h3 class="">Manual Vetting Process</h3>
                                 <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
                             </div>
                         </div>
@@ -187,45 +105,37 @@
                     <div class="col-md-8">
                         <form id="manual-vet-form" class="text-center">
                             <div class="mb-4">
-                                <label class="form-label mt-3">Please click on the <b>parent name</b> you want to do the manual vetting on:</label>
+                                <label class="form-label mt-3">Please click on the issues you want to do the manual vetting:</label>
                             </div>
-                            <table class="table table-bordered table-hover">
-                                <thead class="text-center bg-light">
-                                    <tr>
-                                        <th scope="col" class="p-2">Parent Name (100)</th>
-                                        <th scope="col" class="p-2">Number of Students</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <a href="same_parent_name_view.php">James Odaba</a>
-                                        </td>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="same_parent_name_view.php">Chidi Mary</a>
-                                        </td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="same_parent_name_view.php">Wangare Muthoni</a>
-                                        </td>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="same_parent_name_view.php">Goreti Atieno</a>
-                                        </td>
-                                        <td>3</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-parent-name.php" class="text-primary">Same Parent Name</a>
+                                    <span class="badge bg-light text-dark">100</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-father-name.php" class="text-primary">Same Father Name</a>
+                                    <span class="badge bg-light text-dark">34</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-father-id.php" class="text-primary">Same Father ID Number</a>
+                                    <span class="badge bg-light text-dark">10</span>
+
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-mother-id.php" class="text-primary">Same Mother ID Number</a>
+                                    <span class="badge bg-light text-dark">132</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-student-name.php" class="text-primary">Same Student Name</a>
+                                    <span class="badge bg-light text-dark">230</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <a href="same-admission-school.php" class="text-primary">Same Student Admission Number & School</a>
+                                    <span class="badge bg-light text-dark">18</span>
+                                </li>
+                            </ul>
                         </form>
-                    </div>
-                    
+                    </div>                    
                     <div class="col-md-4 pt-4">
                         <div class="card">
                             <div class="card-body">

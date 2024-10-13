@@ -1,16 +1,6 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bulk_sms";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include('connection/conn.php');
+include('connection/header.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['send_internal'])) {
     // Get form inputs

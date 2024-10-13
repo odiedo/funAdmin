@@ -1,3 +1,8 @@
+<?php
+include('connection/conn.php');
+include('connection/header.php');
+include('connection/student_view_summary.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +59,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Odiedo Paul</h6>
+                        <h6 class="mb-0"><?php echo ucfirst($_SESSION['fullname']); ?></h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -81,93 +86,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Mercy sent you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Desmond sent you a message</h6>
-                                        <small>21 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Monica sent you a message</h6>
-                                        <small>28 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Odiedo Paul</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <?php include('top_nav.php'); ?>
             <!-- Navbar End -->
             <div class="container mt-4">
                 <div class="container">
@@ -175,7 +94,7 @@
                         <div class="col-md-12 bg-light">
                             <div class="handles p-2">
                                 <div class="d-flex justify-content-between">
-                                    <h3 class="">Student Data - Kajiado East</h3>
+                                    <h3 class="">Student Data - <?= htmlspecialchars($name);?></h3>
                                     <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
                                 </div>
                             </div>
@@ -184,113 +103,107 @@
                     <div class="row g-4">
                         <!-- Personal Information Column -->
                         <div class="col-md-4" style="font-size: 0.85rem;">
-                            <h4 class="text-success text-center" style="font-size: 1rem;"><i class="fas fa-user fa-3x"></i><br> Personal Info</h4>
+                            <h4 class="text-success text-center" style="font-size: 1rem;">
+                                <i class="fas fa-user fa-3x"></i><br> Personal Info
+                            </h4>
                             <div class="d-flex justify-content-between">
-                                <strong>Application ID:</strong> <span>APP20241001</span>
+                                <strong>Application ID:</strong> <span><?= htmlspecialchars($student['app_id']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Name:</strong> <span>John Mwangi</span>
+                                <strong>Name:</strong> <span><?= htmlspecialchars($student['name']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Gender:</strong> <span>Male</span>
+                                <strong>Gender:</strong> <span><?= htmlspecialchars($student['gender']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Date of Birth:</strong> <span>12th June 2005</span>
+                                <strong>Date of Birth:</strong> <span><?= htmlspecialchars($student['dob']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Birth Certificate No:</strong> <span>BC202141234</span>
+                                <strong>Birth Certificate No:</strong> <span><?= htmlspecialchars($student['birth_cert_no']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Postal Address:</strong> <span>P.O. Box 123, Kajiado</span>
+                                <strong>Phone:</strong> <span><?= htmlspecialchars($student['phone']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Phone:</strong> <span>+254 712 345 678</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <strong>Email:</strong> <span>john.mwangi@example.com</span>
+                                <strong>Email:</strong> <span><?= htmlspecialchars($student['email']); ?></span>
                             </div>
                         </div>
 
                         <!-- Education and Financial Information Column -->
                         <div class="col-md-4" style="font-size: 0.85rem;">
-                            <h4 class="text-success text-center" style="font-size: 1rem;"><i class="fas fa-school fa-3x"></i> <br> Education Info</h4>
+                            <h4 class="text-success text-center" style="font-size: 1rem;">
+                                <i class="fas fa-school fa-3x"></i> <br> Education Info
+                            </h4>
                             <div class="d-flex justify-content-between">
-                                <strong>School:</strong> <span>Kajiado High School</span>
+                                <strong>School:</strong> <span><?= htmlspecialchars($student['school']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Admission No:</strong> <span>ADM202101</span>
+                                <strong>Admission No:</strong> <span><?= htmlspecialchars($student['adm_no']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Class:</strong> <span>Form 4</span>
+                                <strong>Class:</strong> <span><?= htmlspecialchars($student['class']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Year of Admission:</strong> <span>2021</span>
+                                <strong>Year of Admission:</strong> <span><?= htmlspecialchars($student['year_of_admission']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Course Duration:</strong> <span>4 Years</span>
+                                <strong>Course Duration:</strong> <span><?= htmlspecialchars($student['course_duration']); ?> Years</span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Expected Completion:</strong> <span>2024</span>
+                                <strong>Expected Completion:</strong> <span><?= htmlspecialchars($student['expected_completion']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Education Level:</strong> <span>Secondary</span>
+                                <strong>Education Level:</strong> <span><?= htmlspecialchars($student['education_level']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Fee Balance:</strong> <span>Kshs 15,000</span>
+                                <strong>Fee Balance:</strong> <span>Kshs <?= htmlspecialchars($student['fee_balance']); ?></span>
                             </div>
                         </div>
 
                         <!-- Family Information Column -->
                         <div class="col-md-4" style="font-size: 0.85rem;">
-                            <h4 class="text-success text-center" style="font-size: 1rem;"><i class="fas fa-users fa-3x"></i><br> Parents Info</h4>
+                            <h4 class="text-success text-center" style="font-size: 1rem;">
+                                <i class="fas fa-users fa-3x"></i><br> Parents Info
+                            </h4>
                             <div class="d-flex justify-content-between">
-                                <strong>Father's Name:</strong> <span>Peter Mwangi</span>
+                                <strong>Father's Name:</strong> <span><?= htmlspecialchars($student['fname']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Father's ID Number:</strong> <span>12345678</span>
+                                <strong>Father's ID Number:</strong> <span><?= htmlspecialchars($student['id_number']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Father's Phone:</strong> <span>+254 722 123 456</span>
+                                <strong>Father's Phone:</strong> <span><?= htmlspecialchars($student['phone']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Father Alive/Deceased:</strong> <span>Alive</span>
+                                <strong>Father Alive/Deceased:</strong> <span><?= htmlspecialchars($student['dead_alive']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Father's Occupation:</strong> <span>Farmer</span>
+                                <strong>Father's Occupation:</strong> <span><?= htmlspecialchars($student['occupation']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Father's Income:</strong> <span>Kshs 30,000</span>
+                                <strong>Mother's Name:</strong> <span><?= htmlspecialchars($student['mname']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Mother's Name:</strong> <span>Mary Wambui</span>
+                                <strong>Mother's ID Number:</strong> <span><?= htmlspecialchars($student['m_id_number']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Mother's ID Number:</strong> <span>23456789</span>
+                                <strong>Mother's Phone:</strong> <span><?= htmlspecialchars($student['m_phone']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Mother's Phone:</strong> <span>+254 733 654 321</span>
+                                <strong>Mother Alive/Deceased:</strong> <span><?= htmlspecialchars($student['m_dead_alive']); ?></span>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <strong>Mother Alive/Deceased:</strong> <span>Alive</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <strong>Mother's Occupation:</strong> <span>Teacher</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <strong>Mother's Income:</strong> <span>Kshs 40,000</span>
+                                <strong>Mother's Occupation:</strong> <span><?= htmlspecialchars($student['m_occupation']); ?></span>
                             </div>
                         </div>
-
                     </div>
-                </div>
+
+                </div>           
                 
-                
-                
-            
                 <!-- Attachments Section -->
                 <div class="section mb-4">
                     <h2 class="text-success">Attachments</h2>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" style="font-size: 0.85rem;">
                         <tr>
                             <th>Birth Certificate</th>
                             <td><a href="#">Download</a></td>
@@ -310,9 +223,6 @@
                     </table>
                 </div>
             </div>
-            
-
-
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
