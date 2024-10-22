@@ -3,7 +3,7 @@ include '../connection/conn.php';
 
 if (isset($_POST['reset'])) {
     // reset columns
-    $columns = ['no_birth', 'no_fee_structure', 'same_parent'];
+    $columns = ['no_birth_cert', 'no_adm_no', 'fee_structure', 'no_school', 'driving_school', 'no_id_no', 'no_m_id_no', 'no_father', 'no_mother', 'no_parents', 'same_parent_name', 'same_father_name', 'same_father_id_no', 'same_mother_id_no', 'same_student_name', 'same_student_admission_no_and_school', 'auto_vet_count'];
 
     $dropSuccess = true;
     $alreadyReset = true;
@@ -25,11 +25,11 @@ if (isset($_POST['reset'])) {
 
     // Return message based
     if ($dropSuccess && !$alreadyReset) {
-        echo "success: Analysis Data Has Been Reset Successfully.";
+        echo "Success: Analysis Data Has Been Reset Successfully.";
     } elseif ($alreadyReset) {
-        echo "error: The data has already been reset.";
+        echo "Error: The data has already been reset.";
     } else {
-        echo "error: Failed to reset Analysis Data.";
+        echo "Error: Failed to reset Analysis Data.";
     }
 }
 

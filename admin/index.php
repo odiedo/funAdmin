@@ -259,9 +259,9 @@ include('connection/dashboard_ward.php');
 
                                 <!-- Save Backup Section -->
                                 <div class="align-items-center custom-upload text-center  mb-4">
-                                    <div id="saveBackupBtn">
-                                        <i class="fa fa-cloud-download-alt fa-3x text-primary"></i><br>
-                                        <span class="ms-3">Save Backup</span>
+                                    <div id="add-other-wards-btn">
+                                        <i class="fa fa-user-plus fa-3x text-primary"></i><br>
+                                        <span class="ms-3">Wards Plus Sync</span>
                                     </div>
                                 </div>
                             </div>
@@ -400,7 +400,13 @@ include('connection/dashboard_ward.php');
                     fetch('connection/sync_dashboard_summary_ward.php', {
                         method: 'POST',
                         body: formData
-                    }).then(response => response.text())
+                    }).then(response => response.text()),
+                    
+                    // third request for dashboard summary other sync
+                    fetch('connection/other_wards_sync.php', {
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.text()),
                 ])
                 .then((results) => {
                     // Hide progress animation after both requests complete
@@ -543,7 +549,38 @@ include('connection/dashboard_ward.php');
             });
         });
     </script>
+<script>
+    $(document).ready(function () {
+        $('#add-other-wards-btn').click(function () {
+            $.ajax({
+                url: 'connection/other_wards.php',
+                type: 'GET',
+                success: function (response) {
+                    $("#toastBodyappend").text(response);
+                    // Show success toast message
+                    var successToast = new bootstrap.Toast(document.getElementById('successToast'));
+                    document.getElementById('successToast').style.display = 'block';
+                    successToast.show();
 
+                    setTimeout(function() {
+                        successToast.hide();
+                    }, 5000);
+                },
+                error: function () {
+                    $("#toastBodyappend").text("Error Occured.");
+                    // Error
+                    var errorToast = new bootstrap.Toast(document.getElementById('errorToast'));
+                    document.getElementById('errorToast').style.display = 'block';
+                    errorToast.show();
+
+                    setTimeout(function() {
+                        errorToast.hide();
+                    }, 5000);
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -140,42 +140,43 @@ include('connection/header.php');
                                 <label class="form-label mt-3">Please select issues you want to vet and click "Auto-vet" button below:</label>
                                 <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" id="issue1" value="No birth certificate provided">
-                                    <label class="form-check-label" for="issue1">No birth certificate provided - 367</label>
+                                    <label class="form-check-label" for="issue1">No birth certificate provided</label>
                                 </div>
                                 <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" id="issue2" value="No admission number provided">
-                                    <label class="form-check-label" for="issue2">No admission number provided - 367</label>
+                                    <label class="form-check-label" for="issue2">No admission number provided</label>
                                 </div>
                                 <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" id="issue3" value="No school provided">
-                                    <label class="form-check-label" for="issue3">No school provided - 367</label>
+                                    <label class="form-check-label" for="issue3">No school provided</label>
                                 </div>
                                 <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" id="issue4" value="Driving school">
-                                    <label class="form-check-label" for="issue4">Driving school - 367</label>
+                                    <label class="form-check-label" for="issue4">No father id number provided</label>
                                 </div>
                                 <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" id="issue5" value="No id number provided">
-                                    <label class="form-check-label" for="issue5">No ID number provided - 367</label>
+                                    <label class="form-check-label" for="issue5">No mother id number provided</label>
                                 </div>
                                 <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" id="issue6" value="No father details provided">
-                                    <label class="form-check-label" for="issue6">No father details provided - 367</label>
+                                    <label class="form-check-label" for="issue6">No father details provided</label>
                                 </div>
                                 <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" id="issue7" value="No mother details provided">
-                                    <label class="form-check-label" for="issue7">No mother details provided - 367</label>
+                                    <label class="form-check-label" for="issue7">No mother details provided</label>
                                 </div>
                                 <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" id="issue8" value="No parents details provided">
-                                    <label class="form-check-label" for="issue8">No parents details provided - 367</label>
+                                    <label class="form-check-label" for="issue8">No parents details provided</label>
                                 </div>
                                 <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" id="issue9" value="Incomplete applicants">
-                                    <label class="form-check-label" for="issue9">Incomplete applicants - 367</label>
+                                    <label class="form-check-label" for="issue9">Incomplete applicants</label>
                                 </div>
+
                             </div>
-                            <button type="button" class="btn btn-primary" onclick="autoVetIssues()">Auto-vet</button>
+                            <button type="button" class="btn btn-primary" onclick="autoVetIssues()"><i class="fas fa-rocket"></i> Auto-vet</button>
                         </form>
                     </div>
                     <div class="col-md-4 pt-4">
@@ -184,14 +185,17 @@ include('connection/header.php');
                                 <h5 class="card-title text-center mb-4">Status Report</h5>
                                 <h5 class="">Vetting Progress</h5>
                                 <div class="progress mb-3">
-                                    <div id="vetting-progress-bar" class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">60%</div>
+                                    <div id="vetting-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">60%</div>
                                 </div>
                                 <h5 class="card-title">Summary</h5>
                                 <ul id="vetting-summary" class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between"><span>Issues Vetted:</span> <span id="issues-count">2</span></li>
-                                    <li class="list-group-item d-flex justify-content-between"><span>Total Students affected:</span> <span id="affected-count">130</span></li>
-                                    <li class="list-group-item d-flex justify-content-between"><span>Remainig Students:</span> <span id="remain-count">3980</span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span>Issues Vetted:</span> <span id="issues-count"> </span></li>
+                                    <li class="list-group-item d-flex justify-content-between"><span>Total Students affected:</span> <span id="affected-count"> </span></li>
+                                    <!-- <li class="list-group-item d-flex justify-content-between"><span>Remainig Students:</span> <span id="remain-count">3980</span></li> -->
                                 </ul>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-primary mt-2" id="reset-button"><i class="fas fa-window-restore"></i> Reset Vetting</button>
+                                </div>
                             </div>
                         </div>
                     </div>                    
@@ -202,6 +206,14 @@ include('connection/header.php');
             <!-- Modal Structure for Loading Animation -->
             <div id="loadingModal" class="modal">
                 <div class="modal-content">
+                    <div class="toast-container position-fixed top-0 end-0 p-3">
+                        <div id="successToast" class="toast bg-success text-white" role="alert">
+                            <div class="toast-body" id="toastBodyappend"></div>
+                        </div>
+                        <div id="errorToast" class="toast bg-danger text-white" role="alert">
+                            <div class="toast-body" id="toastBodyappendError"></div>
+                        </div>
+                    </div>
                     <div class="modal-body">
                         <h4>Auto-vetting</h4>
                         <p id="progress-text">Processing... 0%</p>
@@ -210,6 +222,17 @@ include('connection/header.php');
                     <div class="modal-footer">
                         <button id="ok-button" class="btn btn-success" onclick="closeModal()">Done</button>
                     </div>
+                </div>
+                <!-- Loading Animation HTML -->
+                <div id="loadingAnimation" class="loading-animation" style="display: none;">
+                    <div class="spinner">
+                        <div class="rect1 bg-primary"></div>
+                        <div class="rect2 bg-primary"></div>
+                        <div class="rect3 bg-primary"></div>
+                        <div class="rect4 bg-primary"></div>
+                        <div class="rect5 bg-primary"></div>
+                    </div>
+                    <p class="text-center"><strong>AI Vetting...</strong></p>
                 </div>
             </div>
 
@@ -245,8 +268,24 @@ include('connection/header.php');
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Auto-vetting Script -->
+    <!-- Auto Vet Process -->
     <script>
+        // Function to start the auto-vetting process after a delay
+        function startAutoVetWithDelay() {
+            // Show the loading animation
+            let loadingAnimation = document.getElementById('loadingAnimation');
+            loadingAnimation.style.display = 'block';
+
+            // Add a 5-second delay before starting the auto-vet process
+            setTimeout(() => {
+                // Hide the loading animation
+                loadingAnimation.style.display = 'none';
+                // Call the auto-vet function
+                autoVetIssues();
+            }, 10000); 
+        }
+
+        // Auto-vetting Script
         function autoVetIssues() {
             let modal = document.getElementById('loadingModal');
             let progressText = document.getElementById('progress-text');
@@ -262,43 +301,138 @@ include('connection/header.php');
                 selectedIssues.push(issue.nextElementSibling.innerText);
             });
             
+            if (selectedIssues.length === 0) {
+                alert("Please select at least one issue to auto-vet.");
+                return;
+            }
+
             // Show modal
-            modal.style.display = 'flex'; 
+            modal.style.display = 'flex';
             okButton.style.display = 'none';
             footer.style.display = 'none';
             progressText.innerHTML = 'Processing... 0%';
-    
+            
             let progress = 0;
             let interval = setInterval(function () {
                 if (progress >= 100) {
                     clearInterval(interval);
                     progressText.innerHTML = 'Auto-vetting complete!';
-                    
-                    // Display the list of auto-vetted items
-                    selectedIssues.forEach(function(issue) {
-                        let listItem = document.createElement('li');
-                        listItem.classList.add('list-group-item');
-                        listItem.innerText = issue;
-                        listItem.style.border = 'none',
-                        listItem.style.padding = 'none',
-                        listItem.style.margin = '1',
-                        vettedList.appendChild(listItem);
-                    });
-    
                     okButton.style.display = 'inline-block';
                     footer.style.display = 'block';
                 } else {
                     progress++;
                     progressText.innerHTML = 'Processing... ' + progress + '%';
                 }
-            }, 50); // animation speed time 
+            }, 50); // Animation speed
+
+            // Perform AJAX request to the server
+            console.log("Selected issues:", selectedIssues);
+
+            $.ajax({
+                url: 'analysis/auto_vet.php',
+                type: 'POST',
+                data: { issues: JSON.stringify(selectedIssues) },
+                success: function(response) {
+                    clearInterval(interval);
+                    progressText.innerHTML = 'Auto-vetting complete!';
+                    
+                    // Update the vetted list display
+                    selectedIssues.forEach(function(issue) {
+                        let listItem = document.createElement('li');
+                        listItem.classList.add('list-group-item');
+                        listItem.innerText = issue;
+                        vettedList.appendChild(listItem);
+                    });
+
+                    okButton.style.display = 'inline-block';
+                    footer.style.display = 'block';
+
+                    // Display success or error response in a toast notification
+                    if (response.includes("success")) {
+                        showToast('successToast', response);
+                    } else {
+                        showToast('errorToast', response);
+                    }
+                },
+                error: function() {
+                    clearInterval(interval);
+                    progressText.innerHTML = 'Error processing request.';
+                    okButton.style.display = 'inline-block';
+                    footer.style.display = 'block';
+                    
+                    showToast('errorToast', "Error processing request. Please try again.");
+                }
+            });
         }
-    
+
+        // Function to fetch vetting status and update the report
+        function updateVettingStatus() {
+            // Send an AJAX request to fetch the vetting status
+            fetch('analysis/auto_vet_status.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the Issues Vetted count
+                    document.getElementById('issues-count').textContent = data.vetted_issues || 0;
+
+                    // Update the Total Students Affected count
+                    document.getElementById('affected-count').textContent = data.total_affected || 0;
+
+                    // Update the progress bar based on the number of vetted issues
+                    // Assuming a total of 8 issues for a full progress bar
+                    const totalIssues = 8;
+                    const progressPercent = (data.vetted_issues / totalIssues) * 100;
+                    const progressBar = document.getElementById('vetting-progress-bar');
+                    progressBar.style.width = progressPercent + '%';
+                    progressBar.setAttribute('aria-valuenow', progressPercent);
+                    progressBar.textContent = Math.round(progressPercent) + '%';
+                })
+                .catch(error => {
+                    console.error('Error fetching vetting status:', error);
+                });
+        }
+
+        // Call the function to update the status when the page loads
+        document.addEventListener('DOMContentLoaded', updateVettingStatus);
+
+        // Function to close the modal
         function closeModal() {
             let modal = document.getElementById('loadingModal');
             modal.style.display = 'none';
         }
+
+        // Function to show a toast notification
+        function showToast(toastId, message) {
+            document.getElementById(toastId).querySelector('.toast-body').textContent = message;
+            let toast = new bootstrap.Toast(document.getElementById(toastId));
+            toast.show();
+        }
+
+
+
+        $('#reset-button').click(function () {
+            $.ajax({
+                url: 'analysis/auto_vet_reset.php',
+                type: 'POST',
+                success: function (response) {
+                    let data = JSON.parse(response);
+                    if (data.status === "success") {
+                        alert(data.message);
+                        // Optionally, refresh the vetting status
+                        updateVettingStatus();
+                    } else {
+                        alert("Error: " + data.message);
+                    }
+                },
+                error: function () {
+                    alert("An error occurred while resetting vetting issues.");
+                }
+            });
+        });
+
     </script>
+    
+
+
     <script src="js/main.js"></script>
 </body>
 
