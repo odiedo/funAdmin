@@ -95,7 +95,7 @@ include('connection/sub_location_summary.php');
                     <div class="col-md-12 bg-light">
                         <div class="handles p-2">
                             <div class="left-issue d-flex justify-content-between">
-                                <h3 class="">Epz Sublocation, Kitengela Location</h3>
+                                <h3 class=""><?php echo ucfirst(htmlspecialchars($selectedlocation)); ?> Location</h3>
                                 <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
                             </div>
                         </div>

@@ -3,6 +3,7 @@ include('connection/conn.php');
 include('connection/header.php');
 include('connection/dashboard_one.php');
 include('connection/dashboard_ward.php');
+include('connection/dashboard_other_ward.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -275,7 +276,7 @@ include('connection/dashboard_ward.php');
             </div>
 
             
-            <!-- Statistics  Chart Start -->
+            <!-- Ward Stats Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
@@ -288,10 +289,28 @@ include('connection/dashboard_ward.php');
                                     <?php foreach ($wards as $ward): ?>
                                         <div class="d-flex justify-content-between py-2">
                                         <a href="locations.php?ward=<?php echo urlencode(strtolower(str_replace(' ', '_', $ward['ward']))); ?>">
-                                            <span><?php echo htmlspecialchars($ward['ward']); ?> Ward</span>
+                                            <span><?php echo ucfirst(htmlspecialchars($ward['ward'])); ?> Ward</span>
                                         </a>
 
                                             <span><?php echo $ward['total']; ?></span>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <p>No ward data available.</p>
+                                <?php endif; ?>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Other Regions Applicants</h6>
+                            </div>
+                            <div class="container">
+                                <?php if (!empty($other_wards)): ?>
+                                    <?php foreach ($other_wards as $other_ward): ?>
+                                        <div class="d-flex justify-content-between py-2">
+                                        <a href="locations.php?ward=<?php echo urlencode(strtolower(str_replace(' ', '_', $other_ward['ward']))); ?>">
+                                            <span><?php echo ucfirst(htmlspecialchars($other_ward['ward'])); ?> Ward</span>
+                                        </a>
+
+                                            <span><?php echo $other_ward['total']; ?></span>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php else: ?>
@@ -311,7 +330,7 @@ include('connection/dashboard_ward.php');
                     </div>
                 </div>
             </div>
-            <!-- Statistics Chart End -->
+            <!-- Ward Stats End -->
 
 
             <!-- Data Entry Clerks Start -->

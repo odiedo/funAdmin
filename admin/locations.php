@@ -128,7 +128,7 @@ include('connection/location_summary.php');
                     <div class="col-md-12 bg-light">
                         <div class="handles p-2">
                             <div class="left-issue d-flex justify-content-between">
-                                <h3 class=""><?php echo htmlspecialchars($selectedWard); ?> Ward</h3>
+                                <h3 class=""><?php echo ucfirst(htmlspecialchars($selectedWard)); ?> Ward</h3>
                                 <div class="btn border-0"><i class="fa fa-arrow-left text-info" onClick="window.history.back();"></i></div>
                             </div>
                         </div>
@@ -138,7 +138,7 @@ include('connection/location_summary.php');
                 <!-- Summary Section -->
                 <div class="row g-4">
                     <div class="col-md-8">
-                        <h5 class="py-4"> <i class="fas fa-angle-double-right"></i> Locations in <?php echo htmlspecialchars($selectedWard); ?></h5>
+                        <h5 class="py-4"> <i class="fas fa-list"></i> Locations in <?php echo htmlspecialchars($selectedWard); ?></h5>
                         <ul class="list-group">
                             <?php if (!empty($locations)): ?>
                                 <?php foreach ($locations as $location): ?>
