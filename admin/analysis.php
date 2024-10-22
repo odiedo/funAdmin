@@ -99,7 +99,7 @@ include('connection/header.php');
                                 <h5 class="card-title">Pending Applications</h5>
                                 <div class="d-flex justify-content-between">
                                     <i class="fas fa-clock fa-2x ms-3"></i>
-                                    <h3 class="mb-0" id="pending-count">120</h3>
+                                    <h3 class="mb-0" id="pending-count">98</h3>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@ include('connection/header.php');
                                 <h5 class="card-title">Approved Applications</h5>
                                 <div class="d-flex justify-content-between">
                                     <i class="fas fa-check-circle fa-2x ms-3"></i>
-                                    <h3 class="mb-0" id="pending-count">120</h3>
+                                    <h3 class="mb-0" id="pending-count">0</h3>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@ include('connection/header.php');
                                 <h5 class="card-title">Rejected Applications</h5>
                                 <div class="d-flex justify-content-between">
                                     <i class="fas fa-times-circle fa-2x ms-3"></i>
-                                    <h3 class="mb-0" id="pending-count">120</h3>
+                                    <h3 class="mb-0" id="pending-count">0</h3>
                                 </div>
                             </div>
                         </div>
@@ -193,6 +193,16 @@ include('connection/header.php');
                                 <i class="fas fa-star fa-3x mb-3"></i>
                                 <h5 class="card-title text-primary">Scoring/Ranking</h5>
                                 <a href="#" class="btn btn-outline-primary btn-sm">Run</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- School Balance -->
+                    <div class="col-md-6 col-xl-3">
+                        <div class="card text-center bg-light text-primary border-0 shadow-sm">
+                            <div class="card-body">
+                                <i class="fas fa-school fa-3x mb-3"></i>
+                                <h5 class="card-title text-primary">School Edits</h5>
+                                <a href="school_edits.php" class="btn btn-outline-primary btn-sm">edit</a>
                             </div>
                         </div>
                     </div>

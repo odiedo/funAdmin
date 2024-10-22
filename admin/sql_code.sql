@@ -105,6 +105,14 @@ VALUES
 ('imaroro', 'imaroro', 'imaroro_north'),
 ('imaroro', 'imaroro', 'imaroro_south');
 
+CREATE TABLE other_wards (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ward_name VARCHAR(255) NOT NULL,
+    location_name VARCHAR(255) NOT NULL,
+    sublocation_name VARCHAR(255) NOT NULL
+);
+
+
 
 CREATE TABLE dashboard_summary_ward (
     summary_id INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -116,6 +124,17 @@ CREATE TABLE dashboard_summary_ward (
     sublocation_tot INT(11) DEFAULT 0
 );
 
+CREATE TABLE dashboard_summary_other_ward (
+    other_summary_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    ward VARCHAR(50) NOT NULL,
+    ward_tot INT(11) DEFAULT 0,
+    location VARCHAR(50) NOT NULL,
+    location_tot INT(11) DEFAULT 0,
+    sublocation VARCHAR(50) NOT NULL,
+    sublocation_tot INT(11) DEFAULT 0
+);
+
+-- Clerks Table
 CREATE TABLE clerks (
     clerk_id INT AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(100) NOT NULL,
@@ -132,6 +151,71 @@ VALUES
     ('Mercy Esike', 'esmeresike@gmail.com', '0712233445', 'password_hashed_3', 45, 'active'),
     ('Jude Ojaamong', 'judeojamong@gmail.com', '0712233445', 'password_hashed_3', 45, 'active');
 
+-- Auto Vetting Issues Table
+CREATE TABLE vetting_issues (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    issue_description VARCHAR(255) NOT NULL,
+    vet_status ENUM('vetted', 'not_vetted') DEFAULT 'not_vetted',
+    total_students_affected INT DEFAULT 0
+);
+
+INSERT INTO vetting_issues (issue_description, vet_status, total_students_affected) VALUES
+('No birth certificate provided', 'not_vetted', 0),
+('No admission number provided', 'not_vetted', 0),
+('No school provided', 'not_vetted', 0),
+('No father id number provided', 'not_vetted', 0),
+('No mother id number provided', 'not_vetted', 0),
+('No father details provided', 'not_vetted', 0),
+('No mother details provided', 'not_vetted', 0),
+('No parents details provided', 'not_vetted', 0);
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE `test_data_teso` (
+  `application_id` int(11) PRIMARY KEY NOT NULL,
+  `app_id` int(5) UNIQUE KEY NOT NULL,  ---generate this
+  `email` varchar(26) DEFAULT NULL,     ---use clerk_id(user_id)
+  `name` varchar(24) DEFAULT NULL,      ---student_name
+  `gender` varchar(6) DEFAULT NULL,     ---gender
+  `dob` varchar(10) DEFAULT NULL,       ---set the current date
+  `birth_cert_no` bigint(10) DEFAULT NULL,   ---birth certificate no
+  `phone` bigint(10) DEFAULT NULL,           --- applicant phone number
+  `class` int(1) DEFAULT NULL,              ----form or class
+  `school` varchar(56) DEFAULT NULL,       ----school
+  `adm_no` varchar(19) DEFAULT NULL,      ---adm no
+  `year_of_admission` int(4) DEFAULT NULL,   ---set the current year minus class number(e.g  2024 - 4 you get 2020)
+  `course_duration` int(1) DEFAULT NULL,    -----use zero here
+  `expected_completion` int(4) DEFAULT NULL,     ---use the current year as default
+  `education_level` varchar(10) DEFAULT NULL,    ----education level
+  `fee_balance` int(5) DEFAULT NULL,          ---fee balance
+  `fname` varchar(29) DEFAULT NULL,           --- father name 
+  `id_number` int(9) DEFAULT NULL,           ----father id number
+  `dead_alive` varchar(5) DEFAULT NULL,      ----father_status(dead or alive)
+  `occupation` varchar(15) DEFAULT NULL,     ----use peasant as default
+  `mname` varchar(25) DEFAULT NULL,          ----mother name
+  `m_id_number` int(9) DEFAULT NULL,          ----mother id number
+  `m_phone` bigint(10) DEFAULT NULL,       -----use applicant phone number
+  `m_dead_alive` varchar(5) DEFAULT NULL,     ----mother_status(dead or alive)
+  `m_occupation` varchar(14) DEFAULT NULL,     ----use peasant as deafault
+  `ward` varchar(19) DEFAULT NULL,             ---ward
+  `location` varchar(13) DEFAULT NULL,          ----location
+  `subLocation` varchar(20) DEFAULT NULL,          ----sublocation
+  `disability` varchar(3) DEFAULT NULL,            ----disability(yes or no)
+  `orphan` varchar(14) DEFAULT NULL,           --- orphan(if the father status is dead and mother dead, then use total orphan here, if one of the parent is dead and the other alive, set as partial, if both parents are alive, then set orphan field as  no"
+  `terms` varchar(5) DEFAULT NULL,           ----set to yes
+  `declaration` varchar(5) DEFAULT NULL,        ----set to yes
+  `process_status` varchar(8) DEFAULT NULL,     ----set to complete
+  `status` varchar(10) DEFAULT NULL             ----set to pending
+);
 
 remember to add dashboard sumary one table
 
